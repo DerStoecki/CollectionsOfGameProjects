@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://boqv11vpbvcg7"]
+
+[ext_resource type="PackedScene" uid="uid://bt3w2ncfgrqtx" path="res://Scenes/MyResource/resource_manager.tscn" id="1_n7y5w"]
+[ext_resource type="PackedScene" uid="uid://c836t4g2rqku" path="res://Scenes/MyResource/resource_spawner.tscn" id="2_r6322"]
+
+[node name="TestResourceSpawn" type="Node2D"]
+
+[node name="ResourceManager" parent="." instance=ExtResource("1_n7y5w")]
+
+[node name="ResourceSpawner" parent="." node_paths=PackedStringArray("resManager") instance=ExtResource("2_r6322")]
+resManager = NodePath("../ResourceManager")
+
+[node name="Camera2D" type="Camera2D" parent="."]

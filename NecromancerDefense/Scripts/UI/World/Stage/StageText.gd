@@ -1,0 +1,2 @@
+extends BaseStageOrWorldText
+class_name StageText

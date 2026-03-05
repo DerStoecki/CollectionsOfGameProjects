@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://b50vi8wqe0dap"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory/InventoryAndLoadoutManagement.gd" id="1_ggtyp"]
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/LoadOut/LoadOutGUI.gd" id="1_gvbt5"]
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/InventoryGui.gd" id="3_gvkyy"]
+[ext_resource type="Script" path="res://Scripts/Inventory/ScrollContainer.gd" id="3_ilbrq"]
+
+[node name="InventoryAndLoadoutManagement" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ggtyp")
+
+[node name="LoadOut" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 0
+offset_left = 79.0
+offset_top = 2.0
+offset_right = 627.0
+offset_bottom = 72.0
+alignment = 1
+script = ExtResource("1_gvbt5")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 261.0
+offset_right = 1083.0
+offset_bottom = 541.0
+horizontal_scroll_mode = 0
+script = ExtResource("3_ilbrq")
+
+[node name="Inventory" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+columns = 5
+script = ExtResource("3_gvkyy")

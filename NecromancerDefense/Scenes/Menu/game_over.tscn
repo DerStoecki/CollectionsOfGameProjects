@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://brl2lp7dgqnrs"]
+
+[ext_resource type="Script" path="res://Scripts/GameState/GameOver/GameOverHandler.gd" id="1_abcyb"]
+[ext_resource type="Texture2D" uid="uid://cuskdcn3uapqg" path="res://Assets/test/check_square_grey_cross.png" id="2_2271h"]
+[ext_resource type="Script" path="res://Scripts/Menu/RestartButton.gd" id="3_gqy3o"]
+[ext_resource type="FontFile" uid="uid://dbo534byskp1d" path="res://Assets/Fonts/Kenney Thick.ttf" id="3_xijto"]
+[ext_resource type="Script" path="res://Scripts/Menu/ToMainMenu.gd" id="4_t3ugi"]
+[ext_resource type="Script" path="res://Scripts/Menu/StageSelectButton.gd" id="5_nswn0"]
+
+[node name="GameOver" type="Control"]
+process_mode = 2
+z_index = 100
+layout_mode = 3
+anchor_right = 0.397097
+anchor_bottom = 0.41958
+offset_right = -0.456055
+offset_bottom = 0.112
+script = ExtResource("1_abcyb")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 50
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 0
+offset_left = 152.0
+offset_right = 302.0
+offset_bottom = 150.0
+texture = ExtResource("2_2271h")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 164.0
+offset_right = 328.0
+offset_bottom = 260.0
+
+[node name="Restart" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xijto")
+text = "RESTART"
+script = ExtResource("3_gqy3o")
+unpauseOnClick = true
+
+[node name="StageMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xijto")
+text = "Stage Select
+"
+script = ExtResource("5_nswn0")
+unpauseOnClick = true
+
+[node name="Menu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xijto")
+text = "Menu
+"
+script = ExtResource("4_t3ugi")
+unpauseOnClick = true

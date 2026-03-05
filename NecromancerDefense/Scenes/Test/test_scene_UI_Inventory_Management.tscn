@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6mfonad6rudv"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory/InventoryManager.gd" id="1_bguk1"]
+[ext_resource type="Script" path="res://Scripts/DummyGridManager.gd" id="1_roo4v"]
+[ext_resource type="PackedScene" uid="uid://b50vi8wqe0dap" path="res://Scenes/UI/Inventory/inventory_and_loadout_management.tscn" id="3_62gww"]
+
+[node name="TestScene" type="TileMap"]
+format = 2
+script = ExtResource("1_roo4v")
+
+[node name="InventoryManager" type="Node2D" parent="." node_paths=PackedStringArray("gridManager")]
+position = Vector2(1, 0)
+script = ExtResource("1_bguk1")
+currently_available_slots = 3
+gridManager = NodePath("..")
+
+[node name="InventoryAndLoadoutManagement" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("3_62gww")]
+manager = NodePath("../InventoryManager")

@@ -1,0 +1,3 @@
+extends Melee_Attack_Handler
+
+class_name Sword_Attack_Handler

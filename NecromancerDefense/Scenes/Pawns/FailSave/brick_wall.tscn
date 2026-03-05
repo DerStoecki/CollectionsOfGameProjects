@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://cavj1boudmxgu"]
+
+[ext_resource type="PackedScene" uid="uid://chrm0cbg3j4at" path="res://Scenes/Pawns/FailSave/Brick.tscn" id="1_iilqr"]
+
+[node name="BrickWall" type="Node2D"]
+
+[node name="Brick_1" parent="." instance=ExtResource("1_iilqr")]
+position = Vector2(17, 15)
+
+[node name="Brick_2" parent="." instance=ExtResource("1_iilqr")]
+position = Vector2(17, 47)
+
+[node name="Brick_3" parent="." instance=ExtResource("1_iilqr")]
+position = Vector2(17, 79)
+
+[node name="Brick_4" parent="." instance=ExtResource("1_iilqr")]
+position = Vector2(17, 111)
+
+[node name="Brick_5" parent="." instance=ExtResource("1_iilqr")]
+position = Vector2(17, 141)
+
+[node name="Brick_6" parent="." instance=ExtResource("1_iilqr")]
+position = Vector2(17, 172)
+
+[node name="Brick_7" parent="." instance=ExtResource("1_iilqr")]
+position = Vector2(17, 206)

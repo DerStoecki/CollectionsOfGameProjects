@@ -1,0 +1,2 @@
+extends BaseStageOrWorldContainer
+class_name StageContainer

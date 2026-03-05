@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://c257jr2f6y31o"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory/BluePrint.gd" id="1_efvts"]
+[ext_resource type="PackedScene" uid="uid://cl0ekpcxplqjl" path="res://Scenes/Pawns/Defender/SwordPawn.tscn" id="2_jehtg"]
+[ext_resource type="PackedScene" uid="uid://cqahp78jpauba" path="res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn" id="3_4m8ug"]
+[ext_resource type="Texture2D" uid="uid://cgijvrjqxepn3" path="res://Assets/General/Blueprints/Textures/1.png" id="4_wqivs"]
+
+[node name="BluePrint" type="Node2D"]
+script = ExtResource("1_efvts")
+pawn_scene = ExtResource("2_jehtg")
+preview_pawn_scene = ExtResource("3_4m8ug")
+previewPawnTexture = ExtResource("4_wqivs")

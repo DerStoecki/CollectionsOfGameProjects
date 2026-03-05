@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctaqov5otre30"]
+
+[ext_resource type="Script" path="res://Scripts/UI/GridManager/grid_container.gd" id="1_10uow"]
+
+[node name="GridManagerSingleContainer" type="PanelContainer"]
+modulate = Color(0.0705882, 1, 1, 1)
+z_index = 10
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = -1
+anchor_right = 0.028
+anchor_bottom = 0.049
+offset_right = -0.256001
+offset_bottom = 0.247999
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_10uow")
+
+[node name="DropDataHolder" type="Control" parent="."]
+layout_mode = 2

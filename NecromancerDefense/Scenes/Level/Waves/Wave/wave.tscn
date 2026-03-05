@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dud77el1yh160"]
+
+[ext_resource type="Script" path="res://Scripts/Waves/Wave.gd" id="1_ldd3o"]
+
+[node name="Wave" type="Node"]
+script = ExtResource("1_ldd3o")

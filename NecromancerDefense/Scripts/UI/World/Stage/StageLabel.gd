@@ -1,0 +1,3 @@
+extends BaseStageOrWorldWorldLabel
+class_name StageLabel
+

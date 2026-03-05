@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://djudt0lyjvayt"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/LoadOut/BlueprintContainer.gd" id="1_duj5r"]
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/LoadOut/BlueprintSlot.gd" id="1_rd44u"]
+[ext_resource type="Texture2D" uid="uid://ctftmlxify8ww" path="res://Assets/General/Blueprints/BaseCard.png" id="2_7j7ue"]
+[ext_resource type="Texture2D" uid="uid://cgijvrjqxepn3" path="res://Assets/General/Blueprints/Textures/1.png" id="4_qbruc"]
+[ext_resource type="Texture2D" uid="uid://fm2vjv1a2ehg" path="res://Assets/General/Blueprints/Locked.png" id="5_0b68c"]
+
+[node name="BlueprintContainer" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0.533333)
+custom_minimum_size = Vector2(128, 128)
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_duj5r")
+
+[node name="BlueprintSlot" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_7j7ue")
+expand_mode = 1
+stretch_mode = 6
+script = ExtResource("1_rd44u")
+
+[node name="PreviewPawn" type="TextureRect" parent="BlueprintSlot"]
+show_behind_parent = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+offset_left = 28.0
+offset_top = 7.0
+offset_right = 108.0
+offset_bottom = 83.0
+texture = ExtResource("4_qbruc")
+expand_mode = 1
+
+[node name="LockBp" type="TextureRect" parent="BlueprintSlot"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 133.0
+offset_bottom = 128.0
+texture = ExtResource("5_0b68c")
+expand_mode = 1
+stretch_mode = 6
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

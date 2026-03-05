@@ -1,0 +1,134 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2ej3j8upy7nc"]
+
+[ext_resource type="Texture2D" uid="uid://but311nm37smo" path="res://Assets/World/Level/Base/Select/SelectRight.png" id="1_ur2qr"]
+[ext_resource type="Texture2D" uid="uid://c07qwnheojf7g" path="res://Assets/World/Level/Base/Select/SelectRightHighlight.png" id="2_2aomu"]
+[ext_resource type="Script" path="res://Scripts/UI/World/Worlds/WorldSelector.gd" id="3_4y531"]
+[ext_resource type="Texture2D" uid="uid://bm8lgltccv4i0" path="res://Assets/World/Level/Base/Select/SelectLeft.png" id="3_6cxoq"]
+[ext_resource type="Texture2D" uid="uid://e6job250ctbg" path="res://Assets/World/Level/Base/Select/SelectLeftHighlight.png" id="4_qsyyl"]
+[ext_resource type="Script" path="res://Scripts/UI/World/Worlds/World.gd" id="5_guhe0"]
+[ext_resource type="PackedScene" uid="uid://b4k6iywck3an8" path="res://Scenes/World/Level/world_container.tscn" id="7_e2n5j"]
+[ext_resource type="FontFile" uid="uid://dbo534byskp1d" path="res://Assets/Fonts/Kenney Thick.ttf" id="8_alx6u"]
+[ext_resource type="Script" path="res://Scripts/Menu/ToMainMenu.gd" id="9_ymabg"]
+
+[node name="WorldSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Right" type="TextureButton" parent="." node_paths=PackedStringArray("world", "neighborButton")]
+layout_mode = 2
+offset_left = 554.0
+offset_top = 541.0
+offset_right = 707.0
+offset_bottom = 615.0
+focus_neighbor_left = NodePath("../Left")
+focus_neighbor_top = NodePath("../World")
+texture_normal = ExtResource("1_ur2qr")
+texture_hover = ExtResource("2_2aomu")
+texture_focused = ExtResource("2_2aomu")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_4y531")
+type = 1
+world = NodePath("../World")
+neighborButton = NodePath("../Left")
+
+[node name="Left" type="TextureButton" parent="." node_paths=PackedStringArray("world", "neighborButton")]
+layout_mode = 2
+offset_left = 414.0
+offset_top = 541.0
+offset_right = 567.0
+offset_bottom = 615.0
+focus_neighbor_left = NodePath("../ToMainMenu")
+focus_neighbor_top = NodePath("../World")
+focus_neighbor_right = NodePath("../Right")
+texture_normal = ExtResource("3_6cxoq")
+texture_hover = ExtResource("4_qsyyl")
+texture_focused = ExtResource("4_qsyyl")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_4y531")
+world = NodePath("../World")
+neighborButton = NodePath("../Right")
+
+[node name="World" type="Control" parent="." node_paths=PackedStringArray("selectedWorld")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.491
+anchor_top = 0.54
+anchor_right = 0.491
+anchor_bottom = 0.54
+offset_left = -193.632
+offset_top = -138.92
+offset_right = 193.368
+offset_bottom = 139.08
+focus_neighbor_left = NodePath("../ToMainMenu")
+focus_neighbor_right = NodePath("../Right")
+focus_neighbor_bottom = NodePath("../Left")
+mouse_filter = 2
+script = ExtResource("5_guhe0")
+selectedWorld = NodePath("WorldContainer_Level_1")
+
+[node name="WorldContainer_Level_1" parent="World" node_paths=PackedStringArray("next") instance=ExtResource("7_e2n5j")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 387.0
+offset_bottom = 278.0
+next = NodePath("../WorldContainer_Level_2")
+nextScene = "res://Scenes/World/Stages/base_stage_display.tscn"
+callingName = "The Layer"
+number = "World 1"
+
+[node name="WorldContainer_Level_2" parent="World" node_paths=PackedStringArray("next", "previous") instance=ExtResource("7_e2n5j")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 387.0
+offset_bottom = 278.0
+next = NodePath("../WorldContainer_Level_3")
+previous = NodePath("../WorldContainer_Level_1")
+nextScene = "res://Scenes/World/Stages/base_stage_display.tscn"
+id = 1
+callingName = "The Forest"
+number = "World 2"
+
+[node name="WorldContainer_Level_3" parent="World" node_paths=PackedStringArray("previous") instance=ExtResource("7_e2n5j")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 387.0
+offset_bottom = 278.0
+previous = NodePath("../WorldContainer_Level_2")
+nextScene = "res://Scenes/World/Stages/base_stage_display.tscn"
+id = 2
+callingName = "The Village"
+number = "World 3"
+
+[node name="ToMainMenu" type="Button" parent="."]
+layout_mode = 0
+offset_top = 161.0
+offset_right = 145.0
+offset_bottom = 187.0
+focus_neighbor_right = NodePath("../World")
+theme_override_fonts/font = ExtResource("8_alx6u")
+text = "Main Menu"
+script = ExtResource("9_ymabg")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c836t4g2rqku"]
+
+[ext_resource type="Script" path="res://Scripts/MyResources/GlobalResourceSpawner.gd" id="1_dn426"]
+
+[node name="ResourceSpawner" type="Node"]
+script = ExtResource("1_dn426")
+autostart = false

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c40sbmxe3v4x7"]
+
+[ext_resource type="Script" path="res://Scripts/Waves/WaveManager.gd" id="1_khxke"]
+
+[node name="WaveManager" type="Node"]
+script = ExtResource("1_khxke")
+waitTime = 10

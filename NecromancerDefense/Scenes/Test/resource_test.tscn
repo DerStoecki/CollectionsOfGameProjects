@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8s5h5gsjpa1v"]
+
+[ext_resource type="PackedScene" uid="uid://5ui5o33631ht" path="res://Scenes/MyResource/Bone_Resource.tscn" id="1_joday"]
+[ext_resource type="Script" path="res://Scripts/MyResources/ResourceManager.gd" id="2_pimkj"]
+[ext_resource type="Script" path="res://Scripts/Test/TestLabel.gd" id="3_wwxjd"]
+
+[node name="ResourceTest" type="Node2D"]
+
+[node name="PawnResourceInstance" parent="." node_paths=PackedStringArray("resManager") instance=ExtResource("1_joday")]
+z_index = 10
+resManager = NodePath("../ResMgr")
+
+[node name="PawnResourceInstance2" parent="." node_paths=PackedStringArray("animTree", "resManager") instance=ExtResource("1_joday")]
+position = Vector2(-83, -39)
+animTree = NodePath("../PawnResourceInstance/Tree")
+resManager = NodePath("../ResMgr")
+
+[node name="PawnResourceInstance3" parent="." node_paths=PackedStringArray("animTree", "resManager") instance=ExtResource("1_joday")]
+position = Vector2(75, -41)
+animTree = NodePath("../PawnResourceInstance/Tree")
+resManager = NodePath("../ResMgr")
+
+[node name="PawnResourceInstance4" parent="." node_paths=PackedStringArray("animTree", "resManager") instance=ExtResource("1_joday")]
+position = Vector2(78, 42)
+animTree = NodePath("../PawnResourceInstance/Tree")
+resManager = NodePath("../ResMgr")
+
+[node name="PawnResourceInstance5" parent="." node_paths=PackedStringArray("animTree", "resManager") instance=ExtResource("1_joday")]
+position = Vector2(-37, 46)
+animTree = NodePath("../PawnResourceInstance/Tree")
+resManager = NodePath("../ResMgr")
+
+[node name="PawnResourceInstance6" parent="." node_paths=PackedStringArray("animTree", "resManager") instance=ExtResource("1_joday")]
+position = Vector2(-30, -42)
+animTree = NodePath("../PawnResourceInstance/Tree")
+resManager = NodePath("../ResMgr")
+
+[node name="PawnResourceInstance7" parent="." node_paths=PackedStringArray("animTree", "resManager") instance=ExtResource("1_joday")]
+position = Vector2(-99, 24)
+animTree = NodePath("../PawnResourceInstance/Tree")
+resManager = NodePath("../ResMgr")
+
+[node name="PawnResourceInstance8" parent="." node_paths=PackedStringArray("animTree", "resManager") instance=ExtResource("1_joday")]
+position = Vector2(110, 1)
+animTree = NodePath("../PawnResourceInstance/Tree")
+resManager = NodePath("../ResMgr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="ResMgr" type="Node2D" parent="."]
+script = ExtResource("2_pimkj")
+
+[node name="Label" type="Label" parent="ResMgr"]
+offset_left = -144.0
+offset_top = 58.0
+offset_right = -104.0
+offset_bottom = 81.0
+text = "test"
+script = ExtResource("3_wwxjd")

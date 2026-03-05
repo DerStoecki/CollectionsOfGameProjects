@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkv7pg6h8a7yv"]
+
+[ext_resource type="Script" path="res://Scripts/Waves/WaveContent.gd" id="1_d3wkt"]
+
+[node name="WaveContent" type="Node"]
+script = ExtResource("1_d3wkt")
+cell_positions = Array[Vector2i]([Vector2i(25, 3), Vector2i(25, 3), Vector2i(25, 3), Vector2i(25, 3)])
+spawnTime = 15

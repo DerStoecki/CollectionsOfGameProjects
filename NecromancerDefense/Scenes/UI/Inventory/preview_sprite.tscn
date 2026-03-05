@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpjlw8kspyinq"]
+
+[ext_resource type="Texture2D" uid="uid://cgijvrjqxepn3" path="res://Assets/General/Blueprints/Textures/1.png" id="1_d58s3"]
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/preview_sprite.gd" id="2_bdwit"]
+
+[node name="Preview" type="Sprite2D"]
+texture = ExtResource("1_d58s3")
+script = ExtResource("2_bdwit")

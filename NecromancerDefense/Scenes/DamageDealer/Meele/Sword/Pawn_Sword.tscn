@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpftpq151hqw2"]
+
+[ext_resource type="Texture2D" uid="uid://bow5sbl3ao6e5" path="res://Assets/DamageDealer/Meele/Sword/Sword.png" id="1_2u2cb"]
+[ext_resource type="Script" path="res://Scripts/Pawns/Attacking/DamageDealer/Sword.gd" id="1_jycod"]
+[ext_resource type="Texture2D" uid="uid://b5wpk1tftkisa" path="res://Assets/DamageDealer/Meele/Sword/BaseSwordDarkShadow.png" id="3_6u1eu"]
+[ext_resource type="Texture2D" uid="uid://cx7hdxpep2xea" path="res://Assets/DamageDealer/Meele/Sword/BaseSwordDarkerShadow.png" id="4_00j8m"]
+[ext_resource type="Texture2D" uid="uid://dypac0eiclq78" path="res://Assets/DamageDealer/Meele/Sword/BaseSwordLightShadow.png" id="5_d1cda"]
+[ext_resource type="Texture2D" uid="uid://cl5iy7rsqn88f" path="res://Assets/DamageDealer/Meele/Sword/BaseSwordLight.png" id="6_kyiuw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hsnm"]
+size = Vector2(98.9834, 114.25)
+
+[node name="Sword" type="Area2D"]
+collision_mask = 2
+monitoring = false
+monitorable = false
+script = ExtResource("1_jycod")
+
+[node name="SwordSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 48)
+texture = ExtResource("1_2u2cb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 58)
+shape = SubResource("RectangleShape2D_7hsnm")
+disabled = true
+
+[node name="Root" type="Node2D" parent="."]
+
+[node name="BaseDark" type="Node2D" parent="Root"]
+
+[node name="BaseSwordDarkShadow" type="Sprite2D" parent="Root/BaseDark"]
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+position = Vector2(0, 48)
+texture = ExtResource("3_6u1eu")
+
+[node name="BaseDarker" type="Node2D" parent="Root"]
+
+[node name="BaseSwordDarkerShadow" type="Sprite2D" parent="Root/BaseDarker"]
+modulate = Color(1, 1, 1, 0)
+z_index = -2
+position = Vector2(0, 48)
+texture = ExtResource("4_00j8m")
+
+[node name="BaseLighter" type="Node2D" parent="Root"]
+
+[node name="BaseSwordLightShadow" type="Sprite2D" parent="Root/BaseLighter"]
+modulate = Color(1, 1, 1, 0)
+z_index = -3
+position = Vector2(0, 48)
+texture = ExtResource("5_d1cda")
+
+[node name="BaseLight" type="Node2D" parent="Root"]
+
+[node name="BaseSwordLight" type="Sprite2D" parent="Root/BaseLight"]
+modulate = Color(1, 1, 1, 0)
+z_index = -4
+position = Vector2(0, 48)
+texture = ExtResource("6_kyiuw")

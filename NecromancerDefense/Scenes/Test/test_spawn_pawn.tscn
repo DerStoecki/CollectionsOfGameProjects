@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0dbuo2jydecx"]
+
+[ext_resource type="PackedScene" uid="uid://bgv1lnbj5y1io" path="res://Scenes/Pawns/Defender/ResourceSpawnPawn.tscn" id="1_0ru5a"]
+[ext_resource type="Script" path="res://Scripts/Test/test_spawn_pawn.gd" id="1_5ch5j"]
+
+[node name="TestSpawnPawn" type="Node2D" node_paths=PackedStringArray("pawn")]
+script = ExtResource("1_5ch5j")
+pawn = NodePath("ResourceSpawnPawn")
+
+[node name="ResourceSpawnPawn" parent="." instance=ExtResource("1_0ru5a")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.5, 3.5)

@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://chrm0cbg3j4at"]
+
+[ext_resource type="Script" path="res://Scripts/Pawns/FailSave/FailSave.gd" id="1_s23cv"]
+[ext_resource type="Texture2D" uid="uid://ce5uwlti0622b" path="res://Assets/DamageDealer/FailSave/Brick.png" id="1_tpgfk"]
+[ext_resource type="Script" path="res://Scripts/Pawns/FailSave/FailSaveAnimationPlayer.gd" id="3_d6h3u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxpv4"]
+size = Vector2(63, 56)
+
+[sub_resource type="Animation" id="Animation_fum7o"]
+resource_name = "Pancake"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Brick:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -52), Vector2(0, 23), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Brick:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.169914, 1), Vector2(1.64991, 0.28), Vector2(1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"move"
+}, {
+"args": [],
+"method": &"flattenThem"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5cq3o"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_spcjd"]
+_data = {
+"Pancake": SubResource("Animation_fum7o"),
+"RESET": SubResource("Animation_5cq3o")
+}
+
+[node name="BrickArea" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 256
+collision_mask = 2
+script = ExtResource("1_s23cv")
+
+[node name="Brick" type="Sprite2D" parent="."]
+texture = ExtResource("1_tpgfk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2)
+scale = Vector2(1.39055, 1)
+shape = SubResource("RectangleShape2D_xxpv4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("parent")]
+libraries = {
+"": SubResource("AnimationLibrary_spcjd")
+}
+speed_scale = 2.0
+script = ExtResource("3_d6h3u")
+parent = NodePath("..")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-28.5, 2)
+scale = Vector2(0.35, 2.9)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

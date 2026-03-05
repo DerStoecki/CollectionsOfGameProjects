@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlqlslhlt8bkc"]
+
+[ext_resource type="Script" path="res://Scripts/Waves/Wave.gd" id="1_ama4y"]
+[ext_resource type="PackedScene" uid="uid://bpipf1hyvggia" path="res://Scenes/Level/Waves/WaveContent/Level1/Level1_PriestessWave.tscn" id="2_8f8vn"]
+
+[node name="Wave" type="Node"]
+script = ExtResource("1_ama4y")
+contents = Array[PackedScene]([ExtResource("2_8f8vn")])

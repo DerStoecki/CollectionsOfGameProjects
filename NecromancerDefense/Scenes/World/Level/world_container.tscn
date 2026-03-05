@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4k6iywck3an8"]
+
+[ext_resource type="Script" path="res://Scripts/UI/World/Worlds/WorldContainer.gd" id="1_prw5b"]
+[ext_resource type="Texture2D" uid="uid://m8o3grtxjsdq" path="res://Assets/World/Level/Level1/tileGrass.png" id="3_hetx8"]
+[ext_resource type="Texture2D" uid="uid://dkt7gi8tac6c7" path="res://Assets/World/Level/Level1/tileGrassSelect.png" id="4_kcng1"]
+[ext_resource type="Texture2D" uid="uid://dqur5mpbgkgws" path="res://Assets/World/Level/Level1/tileGrassHover.png" id="5_4hg2y"]
+[ext_resource type="Texture2D" uid="uid://pmy6v1whk44m" path="res://Assets/World/Level/Level1/tileGrassDisabled.png" id="6_18hkb"]
+[ext_resource type="Theme" uid="uid://dpw55657cbvjy" path="res://Assets/Themes/World/StageOrWorld_RichLabelText.tres" id="7_ap7qf"]
+[ext_resource type="Script" path="res://Scripts/UI/World/Worlds/WorldTextureButton.gd" id="7_b80m1"]
+[ext_resource type="Script" path="res://Scripts/UI/World/Worlds/WorldText.gd" id="8_3w0xt"]
+[ext_resource type="LabelSettings" uid="uid://cvo5wb8njyla6" path="res://Assets/World/Stages/WorldLabelSettings.tres" id="9_ysp6l"]
+[ext_resource type="Script" path="res://Scripts/UI/World/Worlds/WorldLabel.gd" id="10_v2qvn"]
+
+[node name="WorldContainer" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.491
+anchor_top = 0.5
+anchor_right = 0.491
+anchor_bottom = 0.5
+offset_left = -190.017
+offset_top = -139.0
+offset_right = 196.983
+offset_bottom = 139.0
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("1_prw5b")
+
+[node name="WorldButton" type="TextureButton" parent="." node_paths=PackedStringArray("parent")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../Left")
+focus_neighbor_right = NodePath("../../../Right")
+focus_neighbor_bottom = NodePath("../../../Right")
+texture_normal = ExtResource("3_hetx8")
+texture_pressed = ExtResource("4_kcng1")
+texture_hover = ExtResource("5_4hg2y")
+texture_disabled = ExtResource("6_18hkb")
+texture_focused = ExtResource("5_4hg2y")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_b80m1")
+parent = NodePath("..")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WorldButton" node_paths=PackedStringArray("parentTexture")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.388
+anchor_right = 0.5
+anchor_bottom = 0.388
+offset_left = 159.885
+offset_top = -272.864
+offset_right = 562.885
+offset_bottom = 322.136
+theme = ExtResource("7_ap7qf")
+text = "Some World Description"
+script = ExtResource("8_3w0xt")
+parentTexture = NodePath("..")
+
+[node name="Label" type="Label" parent="WorldButton" node_paths=PackedStringArray("containerParent", "parentTexture")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.431
+anchor_right = 0.5
+anchor_bottom = 0.431
+offset_left = -279.5
+offset_top = -223.818
+offset_right = 281.5
+offset_bottom = -133.818
+grow_horizontal = 2
+grow_vertical = 2
+text = "World 1"
+label_settings = ExtResource("9_ysp6l")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_v2qvn")
+containerParent = NodePath("../..")
+parentTexture = NodePath("..")
+
+[connection signal="focus_entered" from="WorldButton" to="WorldButton" method="_on_focus_entered"]
+[connection signal="focus_exited" from="WorldButton" to="WorldButton" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="WorldButton" to="WorldButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="WorldButton" to="WorldButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="WorldButton" to="WorldButton" method="_on_pressed"]

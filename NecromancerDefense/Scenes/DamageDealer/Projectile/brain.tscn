@@ -1,0 +1,274 @@
+[gd_scene load_steps=19 format=3 uid="uid://cv4t2cf843esu"]
+
+[ext_resource type="Script" path="res://Scripts/Pawns/Attacking/DamageDealer/Projectile.gd" id="1_w23cc"]
+[ext_resource type="SpriteFrames" uid="uid://ivax6lg03h12" path="res://Scenes/DamageDealer/Projectile/brain.tres" id="2_f01h7"]
+[ext_resource type="Script" path="res://Scripts/Pawns/Animation/AnimationTreeActiveReady.gd" id="3_hrdsy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n3xvb"]
+resource_local_to_scene = true
+
+[sub_resource type="Animation" id="Animation_6h5oe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:spawnDone")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Spawn"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tx2me"]
+_data = {
+"RESET": SubResource("Animation_6h5oe")
+}
+
+[sub_resource type="Animation" id="Animation_mh87h"]
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"applyDamage"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_g6oym"]
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_f01h7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:spawnDone")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Travel"]
+}
+
+[sub_resource type="Animation" id="Animation_axgld"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Travel"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.166667, 0.233333, 0.3, 0.366667, 0.4, 0.466667, 0.533333, 0.566667, 0.633333, 0.7, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3, 0.4, 0.533333, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, -6), Vector2(-2, 1.33333), Vector2(-6, 0), Vector2(2, -6), Vector2(4.66667, 3.33333)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"startTimer"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wl8ey"]
+_data = {
+"Attack": SubResource("Animation_mh87h"),
+"Spawn": SubResource("Animation_g6oym"),
+"Travel": SubResource("Animation_axgld")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rdusq"]
+animation = &"Brain/Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2s8dq"]
+animation = &"Brain/Spawn"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_whg3t"]
+animation = &"Brain/Travel"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5qbjr"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6qypi"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2o08e"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b8lon"]
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_j7rww"]
+states/Brain_Attack/node = SubResource("AnimationNodeAnimation_rdusq")
+states/Brain_Attack/position = Vector2(757, 100)
+states/Brain_Spawn/node = SubResource("AnimationNodeAnimation_2s8dq")
+states/Brain_Spawn/position = Vector2(362, 109)
+states/Brain_Travel/node = SubResource("AnimationNodeAnimation_whg3t")
+states/Brain_Travel/position = Vector2(602, 39)
+states/Start/position = Vector2(158, 109)
+transitions = ["Start", "Brain_Spawn", SubResource("AnimationNodeStateMachineTransition_5qbjr"), "Brain_Spawn", "Brain_Travel", SubResource("AnimationNodeStateMachineTransition_6qypi"), "Brain_Attack", "End", SubResource("AnimationNodeStateMachineTransition_2o08e"), "Brain_Travel", "Brain_Attack", SubResource("AnimationNodeStateMachineTransition_b8lon")]
+graph_offset = Vector2(-4, -36)
+
+[node name="Brain" type="Area2D" node_paths=PackedStringArray("tree")]
+scale = Vector2(1.5, 1.5)
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("1_w23cc")
+speed = 30.0
+tree = NodePath("AnimationTreeActiveReady")
+travelDistanceTime = 5.0
+damage = 25
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5.72917, -0.203124)
+sprite_frames = ExtResource("2_f01h7")
+animation = &"Spawn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n3xvb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tx2me"),
+"Brain": SubResource("AnimationLibrary_wl8ey")
+}
+
+[node name="AnimationTreeActiveReady" type="AnimationTree" parent="."]
+active = false
+deterministic = false
+tree_root = SubResource("AnimationNodeStateMachine_j7rww")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/attack = false
+script = ExtResource("3_hrdsy")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

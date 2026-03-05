@@ -1,0 +1,7 @@
+class_name SWORD_STATE
+
+enum STATE {
+	SWING_UP,
+	SWING_DOWN,
+	WAIT
+}

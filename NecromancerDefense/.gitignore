@@ -1,0 +1,11 @@
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
+.godot/
+
+# Mono-specific ignores
+.mono/
+*.aseprite
+*.tmp

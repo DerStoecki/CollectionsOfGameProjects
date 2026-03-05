@@ -1,0 +1,3 @@
+extends Object
+class_name RANKING
+enum RANK {STUDENT, NECROMANCER, LICH, ELDERLICH, LICHGOD}

@@ -1,0 +1,3 @@
+extends BaseStageOrWorldTextureButton
+class_name StageTexture
+

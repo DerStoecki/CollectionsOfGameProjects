@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cduuai04uu7fy"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7qk18"]
+
+[node name="EmptySceneToCheck" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1151.0
+offset_bottom = 483.0
+texture = SubResource("PlaceholderTexture2D_7qk18")

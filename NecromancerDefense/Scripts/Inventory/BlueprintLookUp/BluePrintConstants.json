@@ -1,0 +1,455 @@
+
+{
+	"BluePrints": [
+		{
+			"id": 0,
+			"bpName": "BASE_RESOURCE_SPAWNER",
+			"rechargeTime": 10,
+			"resource_cost": 25,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/ResourceSpawnPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/SwordPawnVariant.png"
+		},
+		{
+			"id": 1,
+			"bpName": "BASE_DEFENDER_SWORD",
+			"rechargeTime": 10,
+			"resource_cost": 50,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/SwordPawn.png"
+		},
+		{
+			"id": 2,
+			"bpName": "BASE_DEFENDER_BOW",
+			"rechargeTime": 10,
+			"resource_cost": 100,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/BowPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/BowPawn.png"
+		},
+		{
+			"id": 3,
+			"bpName": "BASE_DEFENDER_TANK",
+			"rechargeTime": 30,
+			"resource_cost": 150,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SlimePawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/SlimePawn.png"
+		},
+		{
+			"id": 4,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 5,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 6,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 7,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 8,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 9,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 10,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 11,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 12,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 13,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 14,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 15,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 16,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 17,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 18,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 19,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 20,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 21,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 22,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 23,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 24,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 25,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 26,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 27,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 28,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 29,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 30,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 31,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 32,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 33,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 34,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 35,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 36,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 37,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 38,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 39,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 40,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 41,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 42,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 43,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		},
+		{
+			"id": 44,
+			"bpName": "BASE_DEFENDER_VIER",
+			"rechargeTime": 10,
+			"resource_cost": 30,
+			"group": 1,
+			"pawn_scene": "res://Scenes/Pawns/Defender/SwordPawn.tscn",
+			"preview_pawn_scene": "res://Scenes/Pawns/PreviewPawn/PreviewPawn.tscn",
+			"preview_texture": "res://Assets/General/Blueprints/Textures/1.png"
+		}
+	]
+}

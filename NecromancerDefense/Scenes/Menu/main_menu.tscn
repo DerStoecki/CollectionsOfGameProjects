@@ -1,0 +1,150 @@
+[gd_scene load_steps=11 format=3 uid="uid://bwpvd4voxbggy"]
+
+[ext_resource type="Texture2D" uid="uid://b4pd11lk2k8uv" path="res://Assets/Menu/Banner.png" id="1_7idpf"]
+[ext_resource type="LabelSettings" uid="uid://cvo5wb8njyla6" path="res://Assets/World/Stages/WorldLabelSettings.tres" id="2_m5jy1"]
+[ext_resource type="FontFile" uid="uid://dbo534byskp1d" path="res://Assets/Fonts/Kenney Thick.ttf" id="2_noy3w"]
+[ext_resource type="Script" path="res://Scripts/Menu/WorldSelectButton.gd" id="3_yrmcf"]
+[ext_resource type="Script" path="res://Scripts/Menu/QuitButton.gd" id="5_13cwg"]
+[ext_resource type="Script" path="res://Scripts/Menu/rusureExitYes.gd" id="5_b1d58"]
+[ext_resource type="Script" path="res://Scripts/Menu/rusureExitNo.gd" id="6_a664j"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_epub3"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_68slg"]
+specular_texture = SubResource("ImageTexture_epub3")
+specular_color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_75qp8"]
+font = ExtResource("2_noy3w")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 1.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+self_modulate = Color(0.450648, 0.450648, 0.450648, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_68slg")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -399.0
+offset_top = 90.0
+offset_right = 419.0
+offset_bottom = -181.0
+texture = ExtResource("1_7idpf")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 289.0
+offset_top = 481.0
+offset_right = -272.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Continue" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../WorldSelect")
+theme_override_fonts/font = ExtResource("2_noy3w")
+text = "Continue"
+
+[node name="WorldSelect" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Continue")
+focus_neighbor_bottom = NodePath("../Options")
+theme_override_fonts/font = ExtResource("2_noy3w")
+text = "World Select"
+script = ExtResource("3_yrmcf")
+world_select = "res://Scenes/World/Level/world_select.tscn"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../WorldSelect")
+focus_neighbor_bottom = NodePath("../Exit")
+theme_override_fonts/font = ExtResource("2_noy3w")
+text = "Options"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+process_priority = 1
+layout_mode = 2
+focus_neighbor_top = NodePath("../Options")
+theme_override_fonts/font = ExtResource("2_noy3w")
+text = "Exit"
+script = ExtResource("5_13cwg")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Exit"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -11.038
+anchor_right = 1.012
+anchor_bottom = 1.538
+offset_top = -0.0119934
+offset_right = -0.092041
+offset_bottom = 0.0119972
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/Exit/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Exit/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+text = "Are You Sure You Want To Exit "
+label_settings = SubResource("LabelSettings_75qp8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SureToExit" type="HBoxContainer" parent="VBoxContainer/Exit/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Yes" type="Button" parent="VBoxContainer/Exit/PanelContainer/HBoxContainer/SureToExit" node_paths=PackedStringArray("parent")]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Yes
+"
+script = ExtResource("5_b1d58")
+parent = NodePath("../../..")
+
+[node name="No" type="Button" parent="VBoxContainer/Exit/PanelContainer/HBoxContainer/SureToExit" node_paths=PackedStringArray("parent")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "No
+"
+script = ExtResource("6_a664j")
+parent = NodePath("../../..")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 194.0
+offset_right = 859.0
+offset_bottom = 230.0
+text = "Necromancer Defense"
+label_settings = ExtResource("2_m5jy1")
