@@ -1,0 +1,262 @@
+[gd_scene load_steps=26 format=3 uid="uid://bfb5a2u1sflqw"]
+
+[ext_resource type="Texture2D" uid="uid://dtq6jojnoydq0" path="res://Assets/Images/Player/MainCharakterPortrait.png" id="1_3joca"]
+[ext_resource type="Script" uid="uid://dm4eki13kshi" path="res://Scripts/UI/player_state.gd" id="1_n8f6f"]
+[ext_resource type="Texture2D" uid="uid://cto338rb8bph8" path="res://Assets/Images/Player/MainCharakterPortraitPosessed.png" id="2_n8f6f"]
+[ext_resource type="Texture2D" uid="uid://dym5pr800feqx" path="res://Assets/Images/Player/RahmenPortraitBackground.png" id="2_t40ja"]
+[ext_resource type="Texture2D" uid="uid://beuecpt7matoe" path="res://Assets/Images/Player/MainCharakterPortraitDeath.png" id="3_oc3m2"]
+[ext_resource type="Script" uid="uid://byl42k8akdp2b" path="res://Scripts/UI/player_state_reactor.gd" id="3_wgac3"]
+[ext_resource type="Texture2D" uid="uid://bv8v5q3la4vag" path="res://Assets/Images/Player/RahmenPortrait.png" id="4_wgac3"]
+[ext_resource type="Texture2D" uid="uid://co524nhxswpk4" path="res://Assets/Images/Flashlight/Flashlight_Off.png" id="7_kamvo"]
+[ext_resource type="Script" uid="uid://b232xua2wbf4m" path="res://Scripts/UI/flash_light_UI.gd" id="7_sng64"]
+[ext_resource type="Texture2D" uid="uid://ch5pha0afgnns" path="res://Assets/Images/Flashlight/Flashlight_On.png" id="8_sng64"]
+[ext_resource type="Texture2D" uid="uid://co8fw3veul2bv" path="res://Assets/Images/Flashlight/FlashlightFrame.png" id="9_6c7up"]
+[ext_resource type="Texture2D" uid="uid://8d1vuss55qmw" path="res://Assets/Images/Flashlight/FlashlightBackground.png" id="9_7r2i8"]
+[ext_resource type="Script" uid="uid://d4j5g5w8yjajf" path="res://Scripts/UI/flashlight_on_off.gd" id="10_f7wy0"]
+[ext_resource type="Texture2D" uid="uid://c8c875d6rtklw" path="res://Assets/Images/Flashlight/FlashlightCooldown.png" id="10_wqt5k"]
+[ext_resource type="Texture2D" uid="uid://cshxkxsucukm3" path="res://Assets/Images/Flashlight/Flashlight_OoutOfOrder.png" id="11_wqt5k"]
+[ext_resource type="Script" uid="uid://c8b6g7dtaow2e" path="res://Scripts/UI/out_of_order.gd" id="12_0s5ki"]
+[ext_resource type="Script" uid="uid://kkt6d2qtfxc2" path="res://Scripts/UI/flashlight_cooldown.gd" id="14_0s5ki"]
+[ext_resource type="Script" uid="uid://bfgo55fr8os2f" path="res://Scripts/UI/flashlight_energy.gd" id="18_7r2i8"]
+[ext_resource type="Texture2D" uid="uid://db7xc3em2kyg" path="res://Assets/Images/Flashlight/FlashLightEnergyBackground.png" id="18_q0dno"]
+[ext_resource type="Texture2D" uid="uid://dnvqn4kjdoqj1" path="res://Assets/Images/Flashlight/FlashLightEnergyBackgroundProgress.png" id="19_k41gb"]
+[ext_resource type="Script" uid="uid://cx3ccdoc0kghm" path="res://Scripts/UI/totems_control.gd" id="21_2jtxn"]
+[ext_resource type="Script" uid="uid://tdlak0woq64b" path="res://Scripts/UI/totems_h_box.gd" id="21_axjng"]
+[ext_resource type="FontFile" uid="uid://dbo534byskp1d" path="res://Assets/Fonts/Kenney Thick.ttf" id="23_kmxll"]
+[ext_resource type="Script" uid="uid://bqyh1bhyfq074" path="res://Scripts/UI/count_down.gd" id="24_g4xbg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wga65"]
+line_spacing = 4.0
+font = ExtResource("23_kmxll")
+font_size = 32
+
+[node name="PlayerUI" type="CanvasLayer"]
+
+[node name="PlayerState" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_n8f6f")
+
+[node name="Background" type="TextureRect" parent="PlayerState"]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 207.0
+mouse_filter = 2
+texture = ExtResource("2_t40ja")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Healthy" type="TextureRect" parent="PlayerState"]
+layout_mode = 2
+offset_right = 210.0
+offset_bottom = 207.0
+mouse_filter = 2
+texture = ExtResource("1_3joca")
+expand_mode = 2
+stretch_mode = 4
+script = ExtResource("3_wgac3")
+
+[node name="Posessed" type="TextureRect" parent="PlayerState"]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 207.0
+mouse_filter = 2
+texture = ExtResource("2_n8f6f")
+expand_mode = 2
+stretch_mode = 4
+script = ExtResource("3_wgac3")
+visibleState = 1
+
+[node name="Dead" type="TextureRect" parent="PlayerState"]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 207.0
+mouse_filter = 2
+texture = ExtResource("3_oc3m2")
+expand_mode = 2
+stretch_mode = 4
+script = ExtResource("3_wgac3")
+visibleState = 2
+
+[node name="Frame" type="TextureRect" parent="PlayerState"]
+layout_mode = 0
+offset_right = 216.0
+offset_bottom = 213.0
+mouse_filter = 2
+texture = ExtResource("4_wgac3")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="FlashLight" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.112
+anchor_right = 0.112
+offset_left = -0.0400085
+offset_top = 1.0
+offset_right = 258.96
+offset_bottom = 209.0
+mouse_filter = 2
+script = ExtResource("7_sng64")
+
+[node name="Background" type="TextureRect" parent="FlashLight"]
+layout_mode = 0
+offset_right = 103.0
+offset_bottom = 103.0
+mouse_filter = 2
+texture = ExtResource("9_7r2i8")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Off" type="TextureRect" parent="FlashLight"]
+layout_mode = 0
+offset_right = 103.0
+offset_bottom = 103.0
+mouse_filter = 2
+texture = ExtResource("7_kamvo")
+expand_mode = 2
+stretch_mode = 4
+script = ExtResource("10_f7wy0")
+listen = 1
+
+[node name="On" type="TextureRect" parent="FlashLight"]
+visible = false
+layout_mode = 0
+offset_right = 103.0
+offset_bottom = 103.0
+mouse_filter = 2
+texture = ExtResource("8_sng64")
+expand_mode = 2
+stretch_mode = 4
+script = ExtResource("10_f7wy0")
+
+[node name="Frame" type="TextureRect" parent="FlashLight"]
+layout_mode = 0
+offset_right = 103.0
+offset_bottom = 103.0
+mouse_filter = 2
+texture = ExtResource("9_6c7up")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="OutOfOrder" type="TextureRect" parent="FlashLight"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.023
+anchor_top = 0.053
+anchor_right = 0.023
+anchor_bottom = 0.053
+offset_left = -2.957
+offset_top = -3.024
+offset_right = 99.043
+offset_bottom = 86.976
+mouse_filter = 2
+texture = ExtResource("11_wqt5k")
+expand_mode = 2
+stretch_mode = 4
+script = ExtResource("12_0s5ki")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="FlashLight"]
+layout_mode = 2
+offset_right = 320.0
+offset_bottom = 320.0
+scale = Vector2(0.32, 0.32)
+mouse_filter = 2
+fill_mode = 4
+texture_progress = ExtResource("10_wqt5k")
+script = ExtResource("14_0s5ki")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="FlashLight"]
+self_modulate = Color(1, 0.983856, 0.381808, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.402
+anchor_top = 0.248
+anchor_right = 0.402
+anchor_bottom = 0.248
+offset_left = -1.118
+offset_top = -37.584
+offset_right = 638.882
+offset_bottom = 42.416
+mouse_filter = 2
+step = 0.01
+value = 100.0
+texture_under = ExtResource("18_q0dno")
+texture_progress = ExtResource("19_k41gb")
+script = ExtResource("18_7r2i8")
+
+[node name="TotemsControl" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.113
+anchor_right = 0.167
+anchor_bottom = 0.1
+offset_left = 0.0399933
+offset_top = 108.0
+offset_right = 8.35999
+offset_bottom = 99.0
+script = ExtResource("21_2jtxn")
+
+[node name="TotemsHBox" type="HBoxContainer" parent="TotemsControl"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 724.0
+offset_bottom = 98.0
+script = ExtResource("21_axjng")
+
+[node name="0" type="TextureRect" parent="TotemsControl/TotemsHBox"]
+layout_mode = 2
+expand_mode = 2
+
+[node name="1" type="TextureRect" parent="TotemsControl/TotemsHBox"]
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 4
+
+[node name="2" type="TextureRect" parent="TotemsControl/TotemsHBox"]
+layout_mode = 2
+expand_mode = 2
+
+[node name="3" type="TextureRect" parent="TotemsControl/TotemsHBox"]
+layout_mode = 2
+expand_mode = 3
+
+[node name="4" type="TextureRect" parent="TotemsControl/TotemsHBox"]
+layout_mode = 2
+expand_mode = 2
+
+[node name="5" type="TextureRect" parent="TotemsControl/TotemsHBox"]
+layout_mode = 2
+expand_mode = 2
+
+[node name="6" type="TextureRect" parent="TotemsControl/TotemsHBox"]
+layout_mode = 2
+expand_mode = 2
+
+[node name="7" type="TextureRect" parent="TotemsControl/TotemsHBox"]
+layout_mode = 2
+expand_mode = 2
+
+[node name="8" type="TextureRect" parent="TotemsControl/TotemsHBox"]
+layout_mode = 2
+expand_mode = 2
+
+[node name="9" type="TextureRect" parent="TotemsControl/TotemsHBox"]
+layout_mode = 2
+expand_mode = 2
+
+[node name="CountDown" type="Label" parent="."]
+process_mode = 4
+offset_left = 907.0
+offset_top = 237.0
+offset_right = 1337.0
+offset_bottom = 273.0
+size_flags_horizontal = 4
+text = "REMAINING TIME"
+label_settings = SubResource("LabelSettings_wga65")
+script = ExtResource("24_g4xbg")

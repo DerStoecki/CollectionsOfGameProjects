@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfm08mfvstsa1"]
+
+[ext_resource type="PackedScene" uid="uid://dp6wvuo5n64k7" path="res://Scenes/Game/SFX/sfx_trigger_local_only_once.tscn" id="1_7fxpq"]
+
+[node name="SFX_Trigger_Multiple" instance=ExtResource("1_7fxpq")]
+ID = 1
+
+[node name="AudioTrigger" parent="Area2D" index="1"]
+triggerOnlyOnce = false
+randomPitchRange = 0.05

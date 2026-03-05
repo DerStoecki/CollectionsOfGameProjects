@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds2ntx54m15vd"]
+
+[ext_resource type="Script" uid="uid://bdrv6atbyvs4f" path="res://Scripts/Entities/Game/tile_maps_parent.gd" id="1_m72hl"]
+[ext_resource type="TileSet" uid="uid://byavflvrnn5fh" path="res://Resources/TileSets/Collective_tile_set.tres" id="2_3o1jg"]
+
+[node name="BaseTileMaps" type="Node2D"]
+script = ExtResource("1_m72hl")
+
+[node name="Floors" type="TileMapLayer" parent="."]
+z_index = 5
+tile_set = ExtResource("2_3o1jg")
+
+[node name="Floor_Decoration" type="TileMapLayer" parent="."]
+z_index = 5
+tile_set = ExtResource("2_3o1jg")
+
+[node name="Background_1" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_3o1jg")
+
+[node name="Background_2_Wall_Decoration" type="TileMapLayer" parent="."]
+z_index = 1
+tile_set = ExtResource("2_3o1jg")

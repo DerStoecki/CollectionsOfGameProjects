@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhdyxn6gcpfr8"]
+
+[ext_resource type="Script" uid="uid://dbaoew86c8aaf" path="res://Scripts/Entities/Enemy/boss_ghost_path_2_follow.gd" id="1_bmu6u"]
+[ext_resource type="Script" uid="uid://de4q44blgav4q" path="res://Scripts/Entities/Enemy/Mover_On_Path.gd" id="1_ryxmq"]
+[ext_resource type="PackedScene" uid="uid://x2ebmcf2pvy1" path="res://Scenes/Entities/Enemy/base_enemy.tscn" id="2_bmu6u"]
+
+[sub_resource type="Curve2D" id="Curve2D_mqpg0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 50, -1, 0, 0, 0, 0, 349, 310)
+}
+point_count = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_bmu6u"]
+resource_local_to_scene = true
+
+[node name="BossGhost" type="Path2D"]
+process_mode = 1
+curve = SubResource("Curve2D_mqpg0")
+script = ExtResource("1_bmu6u")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(50, -1)
+rotates = false
+loop = false
+script = ExtResource("1_ryxmq")
+
+[node name="BaseEnemy" parent="PathFollow2D" instance=ExtResource("2_bmu6u")]
+scale = Vector2(2.5, 2.5)
+
+[node name="GhostSprite" parent="PathFollow2D/BaseEnemy" index="1"]
+visible = true
+
+[node name="MovementCondition" parent="PathFollow2D/BaseEnemy" index="3"]
+base_speed = 0.25
+slowed_speed = 0.1
+time_to_apply_slow = 2.0
+slow_recovery = 1.0
+time_to_apply_freeze = 5.0
+
+[node name="Distortion" parent="PathFollow2D/BaseEnemy" index="4"]
+mesh = SubResource("QuadMesh_bmu6u")
+
+[connection signal="ratioFinished" from="PathFollow2D" to="." method="_on_path_follow_2d_ratio_finished"]
+
+[editable path="PathFollow2D/BaseEnemy"]

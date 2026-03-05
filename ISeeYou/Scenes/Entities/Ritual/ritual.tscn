@@ -1,0 +1,153 @@
+[gd_scene load_steps=21 format=3 uid="uid://by3x61sfs1x56"]
+
+[ext_resource type="Script" uid="uid://bs3keym05y41j" path="res://Scripts/Entities/Ritual/ritual.gd" id="1_0wf5a"]
+[ext_resource type="PackedScene" uid="uid://c67mlybmce2u3" path="res://Scenes/Entities/Ritual/ritualPillar.tscn" id="1_3ruui"]
+[ext_resource type="Texture2D" uid="uid://cu6rvy0xf582d" path="res://Assets/Images/Ritual/Var 2.png" id="3_eugtd"]
+[ext_resource type="Texture2D" uid="uid://ccmivt3i3x28d" path="res://Assets/Images/Ritual/RitualSite.png" id="3_jcwqn"]
+[ext_resource type="PackedScene" uid="uid://b3tq7pplngyg8" path="res://Scenes/Game/InteractIcon/Interaction.tscn" id="3_nkusi"]
+[ext_resource type="Texture2D" uid="uid://b4llrarp1aava" path="res://Assets/Images/Ritual/Var 3.png" id="4_gsbve"]
+[ext_resource type="Script" uid="uid://lxenr400406y" path="res://Scripts/Entities/Ritual/ritual_audio.gd" id="4_jiwp8"]
+[ext_resource type="Texture2D" uid="uid://b7y66r0l7knn3" path="res://Assets/Images/Ritual/Var 4.png" id="5_g62rd"]
+[ext_resource type="AudioStream" uid="uid://bxv0a806trht4" path="res://Assets/Music/Ritual/RitualSFX.wav" id="5_nkusi"]
+[ext_resource type="AudioStream" uid="uid://cs8qjyuekyejr" path="res://Assets/Music/Ritual/RitualSFX #2.wav" id="6_jcwqn"]
+[ext_resource type="Texture2D" uid="uid://dj7lyvekntfsb" path="res://Assets/Images/Ritual/Var 5.png" id="6_o5cqq"]
+[ext_resource type="AudioStream" uid="uid://bsjiisxeta4l1" path="res://Assets/Music/Ritual/RitualSFX #3.wav" id="7_lojoj"]
+[ext_resource type="AudioStream" uid="uid://d3bmdg3iipsob" path="res://Assets/Music/Ritual/RitualSFX #4.wav" id="8_je5ng"]
+[ext_resource type="AudioStream" uid="uid://7j43p24aal2o" path="res://Assets/Music/Ritual/RitualSFX #5.wav" id="9_brd4j"]
+[ext_resource type="AudioStream" uid="uid://b75hbpvfo5h8c" path="res://Assets/Music/Ritual/RitualSFX #6.wav" id="10_eugtd"]
+[ext_resource type="AudioStream" uid="uid://t0auvsueusp8" path="res://Assets/Music/Ritual/RitualSFX #7.wav" id="11_gsbve"]
+[ext_resource type="AudioStream" uid="uid://ubdoqhf4scmf" path="res://Assets/Music/Ritual/RitualSFX #8.wav" id="12_g62rd"]
+[ext_resource type="AudioStream" uid="uid://bvp2rutgtxk15" path="res://Assets/Music/Ritual/RitualSFX #9.wav" id="13_o5cqq"]
+[ext_resource type="AudioStream" uid="uid://bg54dw4n61ldo" path="res://Assets/Music/Ritual/RitualSFX #10.wav" id="14_covmi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wf5a"]
+size = Vector2(36, 23)
+
+[node name="Ritual" type="Node2D"]
+script = ExtResource("1_0wf5a")
+initialTimeSeconds = 340
+
+[node name="RitualSiteInteract" parent="." instance=ExtResource("1_3ruui")]
+z_index = 10
+position = Vector2(-43, 0)
+
+[node name="RitualSiteInteract2" parent="." instance=ExtResource("1_3ruui")]
+z_index = 10
+position = Vector2(218, 0)
+totemID = 2
+
+[node name="PillarTexture" parent="RitualSiteInteract2" index="4"]
+texture = ExtResource("3_eugtd")
+
+[node name="RitualSiteInteract3" parent="." instance=ExtResource("1_3ruui")]
+z_index = 4
+position = Vector2(185, 0)
+totemID = 3
+
+[node name="RitualSiteHitbox" parent="RitualSiteInteract3" index="0"]
+z_index = 4
+
+[node name="PillarTexture" parent="RitualSiteInteract3" index="4"]
+texture = ExtResource("4_gsbve")
+
+[node name="RitualSiteInteract4" parent="." instance=ExtResource("1_3ruui")]
+z_index = 4
+position = Vector2(45, 0)
+totemID = 4
+
+[node name="RitualSiteHitbox" parent="RitualSiteInteract4" index="0"]
+z_index = 4
+
+[node name="PillarTexture" parent="RitualSiteInteract4" index="4"]
+texture = ExtResource("5_g62rd")
+
+[node name="RitualSiteInteract5" parent="." instance=ExtResource("1_3ruui")]
+position = Vector2(-78, 0)
+totemID = 5
+
+[node name="PillarTexture" parent="RitualSiteInteract5" index="4"]
+texture = ExtResource("6_o5cqq")
+
+[node name="RitualSiteInteract6" parent="." instance=ExtResource("1_3ruui")]
+position = Vector2(75, 0)
+totemID = 6
+
+[node name="PillarTexture" parent="RitualSiteInteract6" index="4"]
+scale = Vector2(-0.25, 0.25)
+
+[node name="RitualSiteInteract7" parent="." instance=ExtResource("1_3ruui")]
+position = Vector2(-119, 0)
+totemID = 7
+
+[node name="PillarTexture" parent="RitualSiteInteract7" index="4"]
+scale = Vector2(-0.25, 0.25)
+texture = ExtResource("3_eugtd")
+
+[node name="RitualSiteInteract8" parent="." instance=ExtResource("1_3ruui")]
+position = Vector2(112, 0)
+totemID = 8
+
+[node name="PillarTexture" parent="RitualSiteInteract8" index="4"]
+scale = Vector2(-0.25, 0.25)
+texture = ExtResource("4_gsbve")
+
+[node name="RitualSiteInteract9" parent="." instance=ExtResource("1_3ruui")]
+position = Vector2(-161, 0)
+totemID = 9
+
+[node name="PillarTexture" parent="RitualSiteInteract9" index="4"]
+scale = Vector2(-0.25, 0.25)
+texture = ExtResource("5_g62rd")
+
+[node name="RitualSiteInteract10" parent="." instance=ExtResource("1_3ruui")]
+position = Vector2(147, 0)
+totemID = 10
+
+[node name="PillarTexture" parent="RitualSiteInteract10" index="4"]
+scale = Vector2(-0.25, 0.25)
+texture = ExtResource("6_o5cqq")
+
+[node name="RitualSite" type="Sprite2D" parent="."]
+z_index = 15
+position = Vector2(0, -16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_jcwqn")
+
+[node name="RitualArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RitualArea"]
+z_index = 15
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_0wf5a")
+
+[node name="InteractIcon" parent="RitualArea" instance=ExtResource("3_nkusi")]
+position = Vector2(0, -38)
+
+[node name="RiteTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("ritualSites")]
+bus = &"BackgroundMusic"
+script = ExtResource("4_jiwp8")
+ritualSites = [NodePath("../RitualSiteInteract"), NodePath("../RitualSiteInteract2"), NodePath("../RitualSiteInteract3"), NodePath("../RitualSiteInteract4"), NodePath("../RitualSiteInteract5"), NodePath("../RitualSiteInteract6"), NodePath("../RitualSiteInteract7"), NodePath("../RitualSiteInteract8"), NodePath("../RitualSiteInteract9"), NodePath("../RitualSiteInteract10")]
+ritualPrepareOST = Array[AudioStream]([ExtResource("5_nkusi"), ExtResource("6_jcwqn"), ExtResource("7_lojoj"), ExtResource("8_je5ng"), ExtResource("9_brd4j"), ExtResource("10_eugtd"), ExtResource("11_gsbve"), ExtResource("12_g62rd"), ExtResource("13_o5cqq"), ExtResource("14_covmi")])
+ritualStartedOST = ExtResource("14_covmi")
+
+[connection signal="ritualEnded" from="." to="AudioStreamPlayer" method="_on_ritual_ritual_ended"]
+[connection signal="ritualStarted" from="." to="AudioStreamPlayer" method="_on_ritual_ritual_started"]
+[connection signal="body_entered" from="RitualArea" to="." method="_on_ritual_area_body_entered"]
+[connection signal="body_exited" from="RitualArea" to="." method="_on_ritual_area_body_exited"]
+[connection signal="timeout" from="RiteTimer" to="." method="_on_rite_timer_timeout"]
+
+[editable path="RitualSiteInteract"]
+[editable path="RitualSiteInteract2"]
+[editable path="RitualSiteInteract3"]
+[editable path="RitualSiteInteract4"]
+[editable path="RitualSiteInteract5"]
+[editable path="RitualSiteInteract6"]
+[editable path="RitualSiteInteract7"]
+[editable path="RitualSiteInteract8"]
+[editable path="RitualSiteInteract9"]
+[editable path="RitualSiteInteract10"]

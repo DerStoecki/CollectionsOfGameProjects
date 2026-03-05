@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://71wc7lqfaye6"]
+
+[ext_resource type="Texture2D" uid="uid://bj3g0h16iyuy6" path="res://Assets/Images/OtherLights/CandleLight.png" id="1_r0ex2"]
+[ext_resource type="Script" uid="uid://d2cnrbbofbkaw" path="res://Scripts/Entities/Lights/light_source_interact.gd" id="2_dix44"]
+[ext_resource type="Script" uid="uid://b3peru14k853o" path="res://Scripts/Game/interact_area.gd" id="3_70hgt"]
+[ext_resource type="PackedScene" uid="uid://b3tq7pplngyg8" path="res://Scenes/Game/InteractIcon/Interaction.tscn" id="4_r0ex2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_200xw"]
+size = Vector2(20, 30)
+
+[node name="InteractableLightSource" type="Node2D"]
+z_index = 6
+
+[node name="LightSource" type="PointLight2D" parent="."]
+enabled = false
+color = Color(0.811282, 0.740815, 0.405719, 1)
+energy = 0.5
+texture = ExtResource("1_r0ex2")
+texture_scale = 8.0
+script = ExtResource("2_dix44")
+variationAmount = 2.0
+variationSpeed = 1.0
+
+[node name="InteractArea" type="Area2D" parent="."]
+position = Vector2(0, 7)
+collision_layer = 64
+collision_mask = 8
+script = ExtResource("3_70hgt")
+interactionType = 1
+metadata/_custom_type_script = "uid://b3peru14k853o"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("RectangleShape2D_200xw")
+
+[node name="InteractIcon" parent="InteractArea" instance=ExtResource("4_r0ex2")]
+position = Vector2(0, -22)
+
+[connection signal="body_entered" from="InteractArea" to="InteractArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="InteractArea" method="_on_body_exited"]
+[connection signal="interacted" from="InteractArea" to="LightSource" method="_on_interact_area_interacted"]

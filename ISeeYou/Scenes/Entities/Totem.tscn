@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://dp18sps6oy0us"]
+
+[ext_resource type="Texture2D" uid="uid://yyfrara8altv" path="res://Assets/Images/Totems/Totem_1.png" id="1_di6io"]
+[ext_resource type="Script" uid="uid://cp73fniwgrlvn" path="res://Scripts/Entities/Totem/totem.gd" id="1_ke8ui"]
+[ext_resource type="Script" uid="uid://84dwww5f5xic" path="res://Scripts/Entities/Totem/TotemArea.gd" id="1_prp1j"]
+[ext_resource type="Script" uid="uid://dwr1hoou72sy5" path="res://Scripts/Entities/Totem/pick_up_area.gd" id="3_j85iy"]
+[ext_resource type="PackedScene" uid="uid://b3tq7pplngyg8" path="res://Scenes/Game/InteractIcon/Interaction.tscn" id="5_if6sk"]
+[ext_resource type="AudioStream" uid="uid://dpbkduvmubtd7" path="res://Assets/SFX/Totem/Totem.wav" id="6_if6sk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xki0w"]
+radius = 5.0
+height = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_if6sk"]
+size = Vector2(14, 15)
+
+[node name="TotemRoot" type="Node2D"]
+z_index = 10
+script = ExtResource("1_ke8ui")
+
+[node name="TotemArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 16
+script = ExtResource("1_prp1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TotemArea"]
+z_index = 1
+shape = SubResource("CapsuleShape2D_xki0w")
+
+[node name="ResetLightUp" type="Timer" parent="TotemArea"]
+wait_time = 5.0
+one_shot = true
+
+[node name="TotemTexture" type="Sprite2D" parent="TotemArea"]
+visible = false
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("1_di6io")
+
+[node name="PickUpArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 8
+monitoring = false
+script = ExtResource("3_j85iy")
+
+[node name="PickUpHitbox" type="CollisionShape2D" parent="PickUpArea"]
+z_index = 1
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_if6sk")
+
+[node name="InteractIcon" parent="PickUpArea" instance=ExtResource("5_if6sk")]
+position = Vector2(0, -14)
+scale = Vector2(0.75, 0.75)
+
+[node name="TotemProximitySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_if6sk")
+autoplay = true
+max_distance = 600.0
+attenuation = 3.4822
+max_polyphony = 2
+bus = &"Totem"
+
+[connection signal="area_entered" from="TotemArea" to="TotemArea" method="_on_area_entered"]
+[connection signal="area_exited" from="TotemArea" to="TotemArea" method="_on_area_exited"]
+[connection signal="is_hidden" from="TotemArea" to="PickUpArea" method="_on_totem_area_is_hidden"]
+[connection signal="is_lit_up" from="TotemArea" to="PickUpArea" method="_on_totem_area_is_lit_up"]
+[connection signal="timeout" from="TotemArea/ResetLightUp" to="TotemArea" method="_on_reset_light_up_timeout"]
+[connection signal="body_entered" from="PickUpArea" to="PickUpArea" method="_on_body_entered"]
+[connection signal="body_exited" from="PickUpArea" to="PickUpArea" method="_on_body_exited"]

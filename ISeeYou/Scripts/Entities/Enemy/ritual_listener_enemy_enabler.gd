@@ -1,0 +1,2 @@
+extends EnemyEnabler
+class_name RitualListener

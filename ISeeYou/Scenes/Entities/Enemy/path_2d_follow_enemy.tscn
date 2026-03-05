@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://d32vcv5c4tr5y"]
+
+[ext_resource type="Script" uid="uid://de4q44blgav4q" path="res://Scripts/Entities/Enemy/Mover_On_Path.gd" id="1_i38h5"]
+[ext_resource type="PackedScene" uid="uid://x2ebmcf2pvy1" path="res://Scenes/Entities/Enemy/base_enemy.tscn" id="2_mqqgv"]
+[ext_resource type="Script" uid="uid://jhoqrkjfl4gl" path="res://Scripts/Entities/Enemy/EnemyEnabler.gd" id="3_mqqgv"]
+
+[sub_resource type="Curve2D" id="Curve2D_ya515"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 86, -10, 0, 0, 0, 0, 174, 3, 0, 0, 0, 0, 299, -10, 0, 0, 0, 0, 391, 6, 0, 0, 0, 0, 460, -8, 0, 0, 0, 0, 545, 4, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[sub_resource type="QuadMesh" id="QuadMesh_wkbqv"]
+resource_local_to_scene = true
+
+[node name="Path2dFollowEnemy" type="Node2D" groups=["Enemy"]]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ya515")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
+script = ExtResource("1_i38h5")
+
+[node name="BaseEnemy" parent="Path2D/PathFollow2D" instance=ExtResource("2_mqqgv")]
+
+[node name="MovementCondition" parent="Path2D/PathFollow2D/BaseEnemy" index="3"]
+base_speed = 0.03
+slowed_speed = 0.01
+
+[node name="Distortion" parent="Path2D/PathFollow2D/BaseEnemy" index="4"]
+mesh = SubResource("QuadMesh_wkbqv")
+
+[node name="EnemyEnabler" type="Node" parent="." node_paths=PackedStringArray("moverOnPath", "enemyAudio") groups=["EnemyEnabler"]]
+script = ExtResource("3_mqqgv")
+moverOnPath = NodePath("../Path2D/PathFollow2D")
+enemyAudio = NodePath("../Path2D/PathFollow2D/BaseEnemy/EnemyAudio")
+
+[editable path="Path2D/PathFollow2D/BaseEnemy"]

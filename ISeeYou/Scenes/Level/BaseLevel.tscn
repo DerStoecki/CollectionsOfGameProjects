@@ -1,0 +1,342 @@
+[gd_scene load_steps=33 format=3 uid="uid://dntvpfblcxps4"]
+
+[ext_resource type="PackedScene" uid="uid://dtdknrfuwhnr4" path="res://Scenes/Game/game_manager.tscn" id="1_nig0n"]
+[ext_resource type="Script" uid="uid://bx3rtcpjui3tq" path="res://Scripts/Game/scene_changer.gd" id="2_uxxae"]
+[ext_resource type="PackedScene" uid="uid://ccbmec7cwkts8" path="res://Scenes/Entities/Player.tscn" id="3_o1g1d"]
+[ext_resource type="PackedScene" uid="uid://bfb5a2u1sflqw" path="res://Scenes/UI/ui_in_game.tscn" id="4_2ve4c"]
+[ext_resource type="PackedScene" uid="uid://ds2ntx54m15vd" path="res://Scenes/Level/base_tile_maps.tscn" id="4_nig0n"]
+[ext_resource type="PackedScene" uid="uid://5546pvv5e18e" path="res://Scenes/UI/pause_screen.tscn" id="6_toevt"]
+[ext_resource type="PackedScene" uid="uid://2fu3da1487s8" path="res://Scenes/UI/game_over_parent.tscn" id="7_uxxae"]
+[ext_resource type="PackedScene" uid="uid://cx7qekcmen61b" path="res://Scenes/Game/totem_spawner.tscn" id="8_o1g1d"]
+[ext_resource type="Script" uid="uid://cdffw3gn1y1li" path="res://Scripts/Game/last_instance_node_emit_loaded.gd" id="9_2ve4c"]
+[ext_resource type="Script" uid="uid://cs35fh3jjkmdr" path="res://Scripts/Game/animation_tree_scene_changing.gd" id="10_xerb2"]
+[ext_resource type="AudioStream" uid="uid://bslcno7uriyeg" path="res://Assets/ExternalAssets/Doors/Door (Open).mp3" id="11_qx3j0"]
+[ext_resource type="Script" uid="uid://dcruua2s74dj" path="res://Scripts/Game/scene_change_audio.gd" id="12_ah6f1"]
+[ext_resource type="AudioStream" uid="uid://cjoj4vtwndjf1" path="res://Assets/ExternalAssets/Doors/Door (Close).mp3" id="13_6f0v8"]
+[ext_resource type="AudioStream" uid="uid://cxqrwe5otde78" path="res://Assets/Music/OST/Foyer.wav" id="14_ah6f1"]
+
+[sub_resource type="Environment" id="Environment_o1g1d"]
+reflected_light_source = 2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_2ve4c"]
+exposure_multiplier = 0.8
+
+[sub_resource type="Compositor" id="Compositor_xerb2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_toevt"]
+animation = &"Empty"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2ve4c"]
+animation = &"Scene_Transition"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xerb2"]
+animation = &"Scene_Transition_FadeIn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_toevt"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"FadeIn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jsyjl"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"FadeOut"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qx3j0"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ah6f1"]
+advance_mode = 2
+advance_condition = &"FadeIn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6f0v8"]
+advance_mode = 2
+advance_condition = &"FadeOut"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jsyjl"]
+states/Empty/node = SubResource("AnimationNodeAnimation_toevt")
+states/Empty/position = Vector2(264, 100)
+states/Scene_Transition/node = SubResource("AnimationNodeAnimation_2ve4c")
+states/Scene_Transition/position = Vector2(561, 126)
+states/Scene_Transition_FadeIn/node = SubResource("AnimationNodeAnimation_xerb2")
+states/Scene_Transition_FadeIn/position = Vector2(596, 250)
+states/Start/position = Vector2(9, 90)
+transitions = ["Scene_Transition", "Scene_Transition_FadeIn", SubResource("AnimationNodeStateMachineTransition_toevt"), "Scene_Transition_FadeIn", "Scene_Transition", SubResource("AnimationNodeStateMachineTransition_jsyjl"), "Start", "Empty", SubResource("AnimationNodeStateMachineTransition_qx3j0"), "Empty", "Scene_Transition_FadeIn", SubResource("AnimationNodeStateMachineTransition_ah6f1"), "Empty", "Scene_Transition", SubResource("AnimationNodeStateMachineTransition_6f0v8")]
+graph_offset = Vector2(-141, 37)
+
+[sub_resource type="Animation" id="Animation_toevt"]
+resource_name = "Empty"
+
+[sub_resource type="Animation" id="Animation_2ve4c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SceneChangingCanvas/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SceneChangingCanvas:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_o1g1d"]
+resource_name = "Scene_Transition"
+length = 0.7
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_process_to_true"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SceneChangingCanvas/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.433333, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SceneChangingCanvas:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WorldEnvironment/DirectionalLight2D:enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.36),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CloseDoor")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_with_pitch_shift"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xerb2"]
+resource_name = "Scene_Transition_FadeIn"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SceneChangingCanvas/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SceneChangingCanvas:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OpenDoor")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_with_pitch_shift"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ve4c"]
+_data = {
+&"Empty": SubResource("Animation_toevt"),
+&"RESET": SubResource("Animation_2ve4c"),
+&"Scene_Transition": SubResource("Animation_o1g1d"),
+&"Scene_Transition_FadeIn": SubResource("Animation_xerb2")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_o1g1d"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7, -36, 0, 0, 0, 0, -10, -35, 0, 0, 0, 0, -40, -34, 0, 0, 0, 0, -72, -33, 0, 0, 0, 0, -99, -34, 0, 0, 0, 0, -113, -40, 0, 0, 0, 0, -111, -56, 0, 0, 0, 0, -72, -61, 0, 0, 0, 0, 3, -60)
+}
+point_count = 9
+
+[node name="Root" type="Node"]
+script = ExtResource("9_2ve4c")
+
+[node name="OpenDoor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_qx3j0")
+volume_db = -2.0
+bus = &"SFX"
+script = ExtResource("12_ah6f1")
+pitchRange = 0.3
+
+[node name="CloseDoor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_6f0v8")
+volume_db = -2.0
+script = ExtResource("12_ah6f1")
+pitchRange = 0.3
+
+[node name="GameManager" parent="." instance=ExtResource("1_nig0n")]
+
+[node name="SceneChanger" type="Node" parent="."]
+script = ExtResource("2_uxxae")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+process_mode = 3
+environment = SubResource("Environment_o1g1d")
+camera_attributes = SubResource("CameraAttributesPractical_2ve4c")
+compositor = SubResource("Compositor_xerb2")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="WorldEnvironment"]
+color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+energy = 11.5
+blend_mode = 1
+shadow_color = Color(0, 0, 0, 0.898039)
+height = 0.8
+
+[node name="SceneChangingCanvas" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="SceneChangingCanvas"]
+process_mode = 2
+offset_right = 1922.0
+offset_bottom = 1075.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+process_mode = 3
+reset_on_save = false
+tree_root = SubResource("AnimationNodeStateMachine_jsyjl")
+anim_player = NodePath("SceneChangerAnimation")
+parameters/conditions/FadeIn = false
+parameters/conditions/FadeOut = false
+script = ExtResource("10_xerb2")
+
+[node name="SceneChangerAnimation" type="AnimationPlayer" parent="AnimationTree"]
+process_mode = 3
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_2ve4c")
+}
+
+[node name="BaseTileMaps" parent="." instance=ExtResource("4_nig0n")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("tileMap") instance=ExtResource("3_o1g1d")]
+process_mode = 1
+position = Vector2(0, -6)
+tileMap = NodePath("../BaseTileMaps")
+
+[node name="PlayerUI" parent="." instance=ExtResource("4_2ve4c")]
+
+[node name="FlashLight" parent="PlayerUI" index="1" node_paths=PackedStringArray("flashlight", "energy")]
+flashlight = NodePath("../../Player/FlashlightRotator/Flashlight/Enabler")
+energy = NodePath("../../Player/FlashlightRotator/Flashlight/Stamina_Flashlight")
+
+[node name="OutOfOrder" parent="PlayerUI/FlashLight" index="4"]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 110.0
+offset_bottom = 99.0
+
+[node name="CountDown" parent="PlayerUI" index="3"]
+process_mode = 0
+
+[node name="PauseScreen" parent="." instance=ExtResource("6_toevt")]
+
+[node name="GameOverParent" parent="." instance=ExtResource("7_uxxae")]
+
+[node name="TotemSpawner" parent="." instance=ExtResource("8_o1g1d")]
+
+[node name="SpawnPath" parent="TotemSpawner" index="0"]
+curve = SubResource("Curve2D_o1g1d")
+
+[node name="LightGroup" type="Node" parent="."]
+
+[node name="SFXGroup" type="Node" parent="."]
+
+[node name="DoorGroup" type="Node" parent="."]
+
+[node name="EnemyGroup" type="Node" parent="."]
+
+[node name="BackgroundSkyGroup" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("14_ah6f1")
+autoplay = true
+bus = &"BackgroundMusic"
+
+[connection signal="child_entered_tree" from="." to="GameManager" method="_on_root_child_entered_tree"]
+[connection signal="child_entered_tree" from="." to="PlayerUI/TotemsControl" method="_on_root_child_entered_tree"]
+[connection signal="animation_finished" from="AnimationTree" to="SceneChanger" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="Player/AnimationPlayer" to="GameOverParent" method="_on_animation_player_animation_finished"]
+
+[editable path="BaseTileMaps"]
+[editable path="Player"]
+[editable path="Player/TotemParticelParent"]
+[editable path="PlayerUI"]
+[editable path="TotemSpawner"]

@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=3 uid="uid://buhgagan3x6fl"]
+
+[ext_resource type="PackedScene" uid="uid://71wc7lqfaye6" path="res://Scenes/Entities/LightSources/interactable_light_source.tscn" id="1_exyqa"]
+[ext_resource type="Texture2D" uid="uid://6y22q4tbgro4" path="res://Assets/Images/Fire/Fire.png" id="2_phuu2"]
+[ext_resource type="Script" uid="uid://dc6xrc3rwtgy0" path="res://Scripts/Entities/Lights/fire_place.gd" id="3_qr3ic"]
+[ext_resource type="AudioStream" uid="uid://d0bb1ef7lirc3" path="res://Assets/ExternalAssets/Fire/Campfire Loop.mp3" id="4_6rwrh"]
+[ext_resource type="Script" uid="uid://hgjgexkp2hh5" path="res://Scripts/Entities/Lights/fire_sound.gd" id="5_mnbn4"]
+[ext_resource type="AudioStream" uid="uid://gpg0u8dcxbkm" path="res://Assets/ExternalAssets/Fire/Spell - Fireball 2.mp3" id="6_86kjy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hmqg"]
+atlas = ExtResource("2_phuu2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rwrh"]
+atlas = ExtResource("2_phuu2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnbn4"]
+atlas = ExtResource("2_phuu2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86kjy"]
+atlas = ExtResource("2_phuu2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hfm3"]
+atlas = ExtResource("2_phuu2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_764ol"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hmqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rwrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnbn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86kjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hfm3")
+}],
+"loop": true,
+"name": &"Fire",
+"speed": 10.0
+}]
+
+[node name="FirePlace" instance=ExtResource("1_exyqa")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+visible = false
+position = Vector2(-1, 10)
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_764ol")
+animation = &"Fire"
+frame_progress = 0.620857
+script = ExtResource("3_qr3ic")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="3"]
+stream = ExtResource("4_6rwrh")
+volume_db = -2.0
+max_distance = 350.0
+bus = &"SFX"
+script = ExtResource("5_mnbn4")
+fire_loop = ExtResource("4_6rwrh")
+fire_light_up = ExtResource("6_86kjy")
+
+[connection signal="interacted" from="InteractArea" to="AnimatedSprite2D" method="_on_interact_area_interacted"]
+[connection signal="interacted" from="InteractArea" to="AudioStreamPlayer2D" method="_on_interact_area_interacted"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="_on_finished"]

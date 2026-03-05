@@ -1,0 +1,15 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://mbjlx3ug3vil"]
+
+[ext_resource type="AudioStream" uid="uid://8dvu3sq5kf74" path="res://Assets/SFX/FootSteps/Stone/FootStep_Stone_1.wav" id="1_er071"]
+[ext_resource type="AudioStream" uid="uid://b3jy0kgbo3gpc" path="res://Assets/SFX/FootSteps/Stone/FootStep_Stone_2.wav" id="2_co0sp"]
+[ext_resource type="AudioStream" uid="uid://c17s1hvlwbmjm" path="res://Assets/SFX/FootSteps/Stone/FootStep_Stone_3.wav" id="3_e03bb"]
+[ext_resource type="AudioStream" uid="uid://e0jd2s7pwgfn" path="res://Assets/SFX/FootSteps/Stone/FootStep_Stone_4.wav" id="4_vx6ku"]
+
+[resource]
+random_pitch = 1.5
+random_volume_offset_db = 0.1
+streams_count = 4
+stream_0/stream = ExtResource("1_er071")
+stream_1/stream = ExtResource("2_co0sp")
+stream_2/stream = ExtResource("3_e03bb")
+stream_3/stream = ExtResource("4_vx6ku")

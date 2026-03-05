@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://ctiy30jt4t22h"]
+
+[ext_resource type="PackedScene" uid="uid://dtdknrfuwhnr4" path="res://Scenes/Game/game_manager.tscn" id="1_rxm5d"]
+[ext_resource type="PackedScene" uid="uid://ccbmec7cwkts8" path="res://Scenes/Entities/Player.tscn" id="2_wicfy"]
+[ext_resource type="PackedScene" uid="uid://bfb5a2u1sflqw" path="res://Scenes/UI/ui_in_game.tscn" id="3_wicfy"]
+[ext_resource type="PackedScene" uid="uid://d32vcv5c4tr5y" path="res://Scenes/Entities/Enemy/path_2d_follow_enemy.tscn" id="4_go42g"]
+[ext_resource type="PackedScene" uid="uid://pg6dundacjje" path="res://Scenes/Game/Basic_Tilemap_Layout.tscn" id="5_exllb"]
+[ext_resource type="PackedScene" uid="uid://jcqxv2o2526m" path="res://Scenes/Entities/Enemy/path_finding_enemy.tscn" id="5_tq6uv"]
+[ext_resource type="PackedScene" uid="uid://dp6wvuo5n64k7" path="res://Scenes/Game/SFX/sfx_trigger_local_only_once.tscn" id="9_b3dy1"]
+[ext_resource type="PackedScene" uid="uid://bfm08mfvstsa1" path="res://Scenes/Game/SFX/sfx_trigger_local_multiple.tscn" id="11_7tcvf"]
+[ext_resource type="PackedScene" uid="uid://cx7qekcmen61b" path="res://Scenes/Game/totem_spawner.tscn" id="12_exllb"]
+[ext_resource type="PackedScene" uid="uid://by3x61sfs1x56" path="res://Scenes/Entities/Ritual/ritual.tscn" id="12_lc3a7"]
+[ext_resource type="PackedScene" uid="uid://5546pvv5e18e" path="res://Scenes/UI/pause_screen.tscn" id="13_c8rvf"]
+
+[node name="Root" type="Node"]
+
+[node name="GameManager" parent="." instance=ExtResource("1_rxm5d")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("tileMap") instance=ExtResource("2_wicfy")]
+position = Vector2(0, -3)
+tileMap = NodePath("../TileMaps")
+
+[node name="PlayerUI" parent="." instance=ExtResource("3_wicfy")]
+
+[node name="FlashLight" parent="PlayerUI" index="1" node_paths=PackedStringArray("flashlight", "energy")]
+flashlight = NodePath("../../Player/FlashlightRotator/Flashlight/Enabler")
+energy = NodePath("../../Player/FlashlightRotator/Flashlight/Stamina_Flashlight")
+
+[node name="OutOfOrder" parent="PlayerUI/FlashLight" index="4"]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 110.0
+offset_bottom = 99.0
+
+[node name="CountDown" parent="PlayerUI" index="3"]
+process_mode = 0
+
+[node name="Path2dFollowEnemy" parent="." instance=ExtResource("4_go42g")]
+position = Vector2(35, 218)
+
+[node name="TileMaps" parent="." instance=ExtResource("5_exllb")]
+
+[node name="PathFindingEnemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_tq6uv")]
+position = Vector2(-275, -62)
+player = NodePath("../Player")
+resetPos = Vector2(-275, -62)
+
+[node name="EnemyEnabler" parent="PathFindingEnemy" index="2" node_paths=PackedStringArray("pathFindingEnemy", "gm")]
+pathFindingEnemy = NodePath("..")
+gm = NodePath("../../GameManager")
+
+[node name="SFX_Trigger_Local" parent="." node_paths=PackedStringArray("gm") instance=ExtResource("9_b3dy1")]
+position = Vector2(92, -10)
+gm = NodePath("../GameManager")
+isTest = true
+
+[node name="SFX_Trigger_Local2" parent="." node_paths=PackedStringArray("gm") instance=ExtResource("11_7tcvf")]
+position = Vector2(196, -10)
+gm = NodePath("../GameManager")
+isTest = true
+
+[node name="TotemSpawner" parent="." instance=ExtResource("12_exllb")]
+position = Vector2(370, 23)
+allocatedRoomId = 1
+
+[node name="TotemSpawner2" parent="." instance=ExtResource("12_exllb")]
+position = Vector2(528, 18)
+allocatedRoomId = 2
+
+[node name="Ritual" parent="." node_paths=PackedStringArray("gm") instance=ExtResource("12_lc3a7")]
+position = Vector2(131, 0)
+gm = NodePath("../GameManager")
+minTotemCount = 1
+initialTimeSeconds = 50
+
+[node name="PauseScreen" parent="." instance=ExtResource("13_c8rvf")]
+
+[connection signal="child_entered_tree" from="." to="GameManager" method="_on_root_child_entered_tree"]
+[connection signal="child_entered_tree" from="." to="PlayerUI/TotemsControl" method="_on_root_child_entered_tree"]
+
+[editable path="Player"]
+[editable path="Player/TotemParticelParent"]
+[editable path="PlayerUI"]
+[editable path="Path2dFollowEnemy"]
+[editable path="Path2dFollowEnemy/Path2D/PathFollow2D/BaseEnemy"]
+[editable path="PathFindingEnemy"]
+[editable path="PathFindingEnemy/BaseEnemy"]

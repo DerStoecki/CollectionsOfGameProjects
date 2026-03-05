@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://bd1k3o0qvi4rx"]
+
+[ext_resource type="Script" uid="uid://rpq1hyo5jlf0" path="res://Scripts/UI/audio_settings.gd" id="1_erv8u"]
+[ext_resource type="LabelSettings" uid="uid://okbp2dfnjtyr" path="res://Resources/UI/OptionsLabelSettings.tres" id="1_kijvr"]
+[ext_resource type="PackedScene" uid="uid://cyhag2wxcjye3" path="res://Scenes/UI/audio_setting.tscn" id="2_abqho"]
+[ext_resource type="FontFile" uid="uid://dbo534byskp1d" path="res://Assets/Fonts/Kenney Thick.ttf" id="3_kijvr"]
+[ext_resource type="Texture2D" uid="uid://b8gryp71on1vm" path="res://Assets/Images/AudioSettings/MuteCheckbox/mute_checked.png" id="4_gp4yl"]
+[ext_resource type="Texture2D" uid="uid://bm313nst7ks7r" path="res://Assets/Images/AudioSettings/MuteCheckbox/mute_unchecked.png" id="5_0elnu"]
+[ext_resource type="Script" uid="uid://djsn0yrjr7ryw" path="res://Scripts/UI/MainMenu/AudioSettings_Mute.gd" id="6_0elnu"]
+
+[sub_resource type="Theme" id="Theme_erv8u"]
+default_font = ExtResource("3_kijvr")
+
+[node name="AudioSettings" type="VBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+offset_left = 219.0
+offset_top = 107.0
+offset_right = 1897.0
+offset_bottom = 1068.0
+script = ExtResource("1_erv8u")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "_________
+
+AUDIO
+_________
+"
+label_settings = ExtResource("1_kijvr")
+
+[node name="Master" parent="." instance=ExtResource("2_abqho")]
+layout_mode = 2
+
+[node name="Tag" parent="Master" index="0"]
+text = "MASTER VOLUME"
+
+[node name="HSlider" parent="Master" index="1"]
+focus_neighbor_bottom = NodePath("../../Music/HSlider")
+focus_next = NodePath("../../Music/HSlider")
+
+[node name="Music" parent="." instance=ExtResource("2_abqho")]
+layout_mode = 2
+
+[node name="Tag" parent="Music" index="0"]
+text = "Music Volume"
+
+[node name="HSlider" parent="Music" index="1"]
+focus_neighbor_top = NodePath("../../Master/HSlider")
+focus_neighbor_bottom = NodePath("../../SFX/HSlider")
+focus_next = NodePath("../../SFX/HSlider")
+focus_previous = NodePath("../../Master/HSlider")
+bus_name = "BackgroundMusic_Mixer"
+audioType = 1
+
+[node name="SFX" parent="." instance=ExtResource("2_abqho")]
+layout_mode = 2
+
+[node name="Tag" parent="SFX" index="0"]
+text = "SFX Volume"
+
+[node name="HSlider" parent="SFX" index="1"]
+focus_neighbor_top = NodePath("../../Music/HSlider")
+focus_neighbor_bottom = NodePath("../../CheckBox")
+focus_next = NodePath("../../CheckBox")
+focus_previous = NodePath("../../Music/HSlider")
+bus_name = "SFX_Mixer"
+audioType = 2
+
+[node name="CheckBox" type="CheckBox" parent="."]
+process_priority = -1
+layout_mode = 2
+focus_neighbor_top = NodePath("../SFX/HSlider")
+focus_previous = NodePath("../SFX/HSlider")
+theme = SubResource("Theme_erv8u")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_constants/h_separation = 20
+theme_override_font_sizes/font_size = 32
+theme_override_icons/checked = ExtResource("4_gp4yl")
+theme_override_icons/unchecked = ExtResource("5_0elnu")
+text = "UNMUTED"
+script = ExtResource("6_0elnu")
+
+[connection signal="focus_entered" from="CheckBox" to="CheckBox" method="_on_focus_entered"]
+[connection signal="focus_exited" from="CheckBox" to="CheckBox" method="_on_focus_exited"]
+[connection signal="toggled" from="CheckBox" to="CheckBox" method="_on_toggled"]
+
+[editable path="Master"]
+[editable path="Music"]
+[editable path="SFX"]

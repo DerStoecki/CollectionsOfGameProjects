@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://5546pvv5e18e"]
+
+[ext_resource type="LabelSettings" uid="uid://psayq7jojcpf" path="res://Resources/UI/BasicLabelSetting.tres" id="1_hp4js"]
+[ext_resource type="Script" uid="uid://pg42x5svw7j1" path="res://Scripts/UI/PauseMenu/pause_screen_parent.gd" id="1_kkol3"]
+[ext_resource type="FontFile" uid="uid://dbo534byskp1d" path="res://Assets/Fonts/Kenney Thick.ttf" id="2_d4aqr"]
+[ext_resource type="Script" uid="uid://28rbjxbufisu" path="res://Scripts/UI/PauseMenu/Continue.gd" id="3_hc1a3"]
+[ext_resource type="Script" uid="uid://ck28eksyhj3q" path="res://Scripts/UI/PauseMenu/audio_button.gd" id="4_hc1a3"]
+[ext_resource type="PackedScene" uid="uid://bd1k3o0qvi4rx" path="res://Scenes/UI/audio_settings.tscn" id="5_5k2kv"]
+[ext_resource type="Script" uid="uid://cfr2op1ycyvih" path="res://Scripts/UI/PauseMenu/exit_to_main_menu.gd" id="7_5k2kv"]
+[ext_resource type="Script" uid="uid://cbbxnafsiqmig" path="res://Scripts/UI/PauseMenu/close_audio.gd" id="7_kkol3"]
+
+[node name="PauseScreen" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_kkol3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 2
+offset_right = 1922.0
+offset_bottom = 1075.0
+color = Color(0.9, 0.9, 0.9, 0.0862745)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+process_mode = 2
+offset_left = 700.0
+offset_top = 540.0
+offset_right = 1204.0
+offset_bottom = 612.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "- PAUSE -"
+label_settings = ExtResource("1_hp4js")
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_d4aqr")
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+script = ExtResource("3_hc1a3")
+metadata/_custom_type_script = "uid://kajx10dwee1v"
+
+[node name="AudioButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_d4aqr")
+theme_override_font_sizes/font_size = 32
+text = "Audio Settings"
+script = ExtResource("4_hc1a3")
+metadata/_custom_type_script = "uid://kajx10dwee1v"
+
+[node name="AudioSettings" parent="MarginContainer/VBoxContainer/AudioButton" instance=ExtResource("5_5k2kv")]
+visible = false
+layout_mode = 2
+offset_left = 539.0
+offset_top = -282.0
+offset_right = 1043.0
+offset_bottom = 300.0
+
+[node name="CheckBox" parent="MarginContainer/VBoxContainer/AudioButton/AudioSettings" index="4"]
+focus_neighbor_bottom = NodePath("../Close Audio")
+focus_next = NodePath("../Close Audio")
+
+[node name="Close Audio" type="Button" parent="MarginContainer/VBoxContainer/AudioButton/AudioSettings"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../CheckBox")
+focus_previous = NodePath("../CheckBox")
+theme_override_fonts/font = ExtResource("2_d4aqr")
+theme_override_font_sizes/font_size = 32
+text = "Close"
+script = ExtResource("7_kkol3")
+metadata/_custom_type_script = "uid://kajx10dwee1v"
+
+[node name="ExitToMainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_d4aqr")
+theme_override_font_sizes/font_size = 32
+text = "Exit to Menu"
+script = ExtResource("7_5k2kv")
+metadata/_custom_type_script = "uid://kajx10dwee1v"
+
+[connection signal="visibility_changed" from="." to="MarginContainer/VBoxContainer/ContinueButton" method="_on_pause_screen_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ContinueButton" to="MarginContainer/VBoxContainer/ContinueButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/AudioButton" to="MarginContainer/VBoxContainer/AudioButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/AudioButton/AudioSettings/Close Audio" to="MarginContainer/VBoxContainer/AudioButton/AudioSettings/Close Audio" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitToMainMenu" to="MarginContainer/VBoxContainer/ExitToMainMenu" method="_on_pressed"]
+
+[editable path="MarginContainer/VBoxContainer/AudioButton/AudioSettings"]
+[editable path="MarginContainer/VBoxContainer/AudioButton/AudioSettings/Master"]
+[editable path="MarginContainer/VBoxContainer/AudioButton/AudioSettings/Music"]
+[editable path="MarginContainer/VBoxContainer/AudioButton/AudioSettings/SFX"]

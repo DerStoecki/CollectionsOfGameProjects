@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://b26ywcc183xt0"]
+
+[ext_resource type="Script" uid="uid://bunjeh0i20an7" path="res://Scripts/Entities/Enemy/ritual_path_finding.gd" id="1_ib61l"]
+[ext_resource type="PackedScene" uid="uid://x2ebmcf2pvy1" path="res://Scenes/Entities/Enemy/base_enemy.tscn" id="2_i46qf"]
+
+[node name="Ritual_PathFinding" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_ib61l")
+
+[node name="BaseEnemy" parent="." instance=ExtResource("2_i46qf")]
+
+[node name="GhostShadow" parent="BaseEnemy" index="0"]
+visible = false
+
+[node name="MovementCondition" parent="BaseEnemy" index="3"]
+base_speed = 50.0
+slowed_speed = 20.0
+
+[node name="Distortion" parent="BaseEnemy" index="4"]
+visible = false
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_max_distance = 400.0
+simplify_path = true
+debug_enabled = true
+debug_path_custom_color = Color(0.82881, 2.71939e-06, 5.77569e-07, 1)
+
+[node name="Timer" type="Timer" parent="NavigationAgent2D"]
+autostart = true
+
+[connection signal="hit_player" from="BaseEnemy/PlayerDetectorArea" to="." method="_on_player_detector_area_hit_player"]
+[connection signal="timeout" from="NavigationAgent2D/Timer" to="." method="_on_timer_timeout"]
+
+[editable path="BaseEnemy"]

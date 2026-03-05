@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1splq05n41c2"]
+
+[ext_resource type="Texture2D" uid="uid://bj3g0h16iyuy6" path="res://Assets/Images/OtherLights/CandleLight.png" id="1_kynav"]
+[ext_resource type="Script" uid="uid://d2cnrbbofbkaw" path="res://Scripts/Entities/Lights/light_source_interact.gd" id="2_pw1cj"]
+
+[node name="LightSource" type="PointLight2D"]
+color = Color(0.811282, 0.740815, 0.405719, 1)
+energy = 0.5
+texture = ExtResource("1_kynav")
+texture_scale = 8.0
+script = ExtResource("2_pw1cj")
+variationAmount = 2.0
+variationSpeed = 1.0

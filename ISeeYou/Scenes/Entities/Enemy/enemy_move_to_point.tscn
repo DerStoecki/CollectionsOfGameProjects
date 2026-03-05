@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dprt0r13vrpog"]
+
+[ext_resource type="Script" uid="uid://cip83jybtwiva" path="res://Scripts/Entities/Enemy/enemy_move_to_point.gd" id="1_jv2gi"]
+[ext_resource type="Script" uid="uid://oxcb20woak8x" path="res://Scripts/Entities/Enemy/banshee_area.gd" id="4_yyjec"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jv2gi"]
+
+[node name="EnemyMoveToPoint" type="Node2D"]
+script = ExtResource("1_jv2gi")
+
+[node name="BansheeArea" type="Area2D" parent="."]
+collision_layer = 32768
+collision_mask = 0
+script = ExtResource("4_yyjec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BansheeArea"]
+shape = SubResource("RectangleShape2D_jv2gi")

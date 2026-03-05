@@ -1,0 +1,540 @@
+[gd_scene format=3 uid="uid://ccbmec7cwkts8"]
+
+[ext_resource type="Texture2D" uid="uid://dmrfvq54msqeu" path="res://Assets/Images/Player/MainCharakter.png" id="1_3kvya"]
+[ext_resource type="Script" uid="uid://dj5lp1gj4basd" path="res://Scripts/Entities/Player/player.gd" id="1_4kc40"]
+[ext_resource type="Script" uid="uid://dyc1sa05wyvq3" path="res://Scripts/Entities/Player/mover.gd" id="2_v402d"]
+[ext_resource type="Script" uid="uid://dl4tq01sguws2" path="res://Scripts/Entities/Player/jumper.gd" id="3_agccv"]
+[ext_resource type="Script" uid="uid://dwn7pyurcirxd" path="res://Scripts/Entities/Player/rotator.gd" id="4_86atj"]
+[ext_resource type="Texture2D" uid="uid://cy3xbxw3bhcci" path="res://Assets/Images/Flashlight/Flashlight.png" id="4_g4oe6"]
+[ext_resource type="Texture2D" uid="uid://cs5i2pemgyvmg" path="res://Assets/Images/Player/MainCharakterNormal.png" id="4_wmg1a"]
+[ext_resource type="Script" uid="uid://b040gctkbfmd2" path="res://Scripts/Entities/Player/animation_player.gd" id="5_46t5s"]
+[ext_resource type="Script" uid="uid://xyud7776uin0" path="res://Scripts/Entities/Player/enabler.gd" id="6_yu0ev"]
+[ext_resource type="Script" uid="uid://u7cxb0cvo8lb" path="res://Scripts/Entities/Player/stamina.gd" id="7_td8ue"]
+[ext_resource type="FontFile" uid="uid://dbo534byskp1d" path="res://Assets/Fonts/Kenney Thick.ttf" id="8_ynt0t"]
+[ext_resource type="Script" uid="uid://dqah1oibvgrl" path="res://Scripts/Entities/Player/progress_bar_hide.gd" id="9_km4ui"]
+[ext_resource type="Script" uid="uid://5baktvktru5q" path="res://Scripts/Entities/Player/health.gd" id="10_rsj4h"]
+[ext_resource type="Script" uid="uid://cplkxrlues7uv" path="res://Scripts/Entities/flashlight_area_enabledisable.gd" id="11_3m754"]
+[ext_resource type="AudioStream" uid="uid://mbjlx3ug3vil" path="res://Resources/SFX/FootSteps/Stone_FootSteps_Randomizer.tres" id="15_0hljs"]
+[ext_resource type="Script" uid="uid://dmweevuhxb435" path="res://Scripts/Entities/Player/foot_steps.gd" id="16_0hljs"]
+[ext_resource type="PackedScene" uid="uid://c32cqcujifqnr" path="res://Scenes/Entities/totem_particel_parent.tscn" id="17_crkm8"]
+[ext_resource type="Script" uid="uid://yygi5dmkyjy8" path="res://Scripts/Entities/Player/player_foot_step_reverb_enabler.gd" id="17_w67ft"]
+[ext_resource type="Texture2D" uid="uid://dmrw0x8fy6ho3" path="res://Assets/Images/Player/MainCharakterDeath.png" id="18_j230w"]
+[ext_resource type="Texture2D" uid="uid://bt57re83r1817" path="res://Assets/Images/OtherLights/MainCharakter_Light.png" id="19_qkam4"]
+
+[sub_resource type="Resource" id="Resource_4kc40"]
+script = ExtResource("10_rsj4h")
+metadata/_custom_type_script = "uid://5baktvktru5q"
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3m754"]
+diffuse_texture = ExtResource("1_3kvya")
+normal_texture = ExtResource("4_wmg1a")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3m754"]
+radius = 20.0
+height = 60.0
+
+[sub_resource type="Animation" id="Animation_j230w"]
+resource_name = "Death"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeathAnimation:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeathAnimation:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainCharakter:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DeathAnimation:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DeathAnimation:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-3.5, -0.240896, 0, 0.121403, -12, 2.5, -0.0521954, 12, 0.0478046, -11, -7.5, -0.244525, -6, 0.204093, 12, -4.5, -0.229241, 13, 0.0711122, 1),
+"times": PackedFloat32Array(1.06667, 1.5, 1.9, 2.5)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DeathAnimation:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.06678, 1.50084, 1.9, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.745098), Color(1, 1, 1, 0.356863), Color(1, 1, 1, 0.0431373)]
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FlashlightRotator:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 59, -0.25, 0, 0.25, 0, 104, -0.25, 0, 0.25, 0, 64, -0.25, 0, 0.25, 0, -12, -0.25, 0, 0.25, 0, -78, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.503273, 1.13723, 1.62854, 2.12369, 2.49965)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FlashlightRotator:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -29, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0, -8, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.503273, 1.13723, 1.62854, 2.12369, 2.49965)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("FlashlightRotator:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.503273, 1.13642, 1.64555, 2.30618),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 2.64592, 6.02662, -2.79253, 0.0]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimationPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(2.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"set_process_callback"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_46t5s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainCharakter:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainCharakter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeathAnimation:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DeathAnimation:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MainCharakter:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DeathAnimation:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DeathAnimation:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DeathAnimation:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("FlashlightRotator:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("FlashlightRotator:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("FlashlightRotator:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3m754"]
+resource_name = "Walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainCharakter:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.698132, 0.349066]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainCharakter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.133333, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-0.3, -1), Vector2(0.5, 0.2)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FootSteps")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footStep"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0pa8p"]
+_data = {
+&"Death": SubResource("Animation_j230w"),
+&"RESET": SubResource("Animation_46t5s"),
+&"Walk": SubResource("Animation_3m754")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkam4"]
+atlas = ExtResource("18_j230w")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w67ft"]
+atlas = ExtResource("18_j230w")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n4p1"]
+atlas = ExtResource("18_j230w")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pid1y"]
+atlas = ExtResource("18_j230w")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0aity"]
+atlas = ExtResource("18_j230w")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgdn8"]
+atlas = ExtResource("18_j230w")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6xah"]
+atlas = ExtResource("18_j230w")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yheof"]
+atlas = ExtResource("18_j230w")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejhnn"]
+atlas = ExtResource("18_j230w")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd6b6"]
+atlas = ExtResource("18_j230w")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xggc7"]
+atlas = ExtResource("18_j230w")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhvgf"]
+atlas = ExtResource("18_j230w")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_abqr1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkam4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w67ft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n4p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pid1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0aity")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgdn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6xah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yheof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejhnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cd6b6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xggc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhvgf")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=403331222]
+z_index = 15
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_4kc40")
+health_res = SubResource("Resource_4kc40")
+
+[node name="MainCharakter" type="Sprite2D" parent="." unique_id=1193134801]
+scale = Vector2(0.2, 0.2)
+texture = SubResource("CanvasTexture_3m754")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2051108171]
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CapsuleShape2D_3m754")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1723377600]
+libraries/ = SubResource("AnimationLibrary_0pa8p")
+script = ExtResource("5_46t5s")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=617804746]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2023294034]
+position = Vector2(0, -15)
+zoom = Vector2(9, 9)
+
+[node name="Mover" type="Node" parent="." unique_id=480739471 node_paths=PackedStringArray("flippableNodes")]
+script = ExtResource("2_v402d")
+SPEED = 95.0
+flippableNodes = [NodePath("../MainCharakter")]
+
+[node name="Jumper" type="Node" parent="." unique_id=637225623]
+script = ExtResource("3_agccv")
+JUMP_VELOCITY = -300.0
+increase_fall_speed_Amount = 2
+max_jump_height = 50.0
+
+[node name="FlashlightRotator" type="Marker2D" parent="." unique_id=1122177219]
+script = ExtResource("4_86atj")
+
+[node name="Flashlight" type="PointLight2D" parent="FlashlightRotator" unique_id=1432867257]
+z_index = 10
+position = Vector2(77, 0)
+scale = Vector2(0.3, 0.07)
+energy = 0.7
+texture = ExtResource("4_g4oe6")
+texture_scale = 1.48
+
+[node name="Enabler" type="Node2D" parent="FlashlightRotator/Flashlight" unique_id=1042448722 node_paths=PackedStringArray("visibility_nodes", "enabled_nodes")]
+script = ExtResource("6_yu0ev")
+visibility_nodes = [NodePath("..")]
+enabled_nodes = [NodePath("../FlashlightArea/Node")]
+
+[node name="Stamina_Flashlight" type="Node2D" parent="FlashlightRotator/Flashlight" unique_id=215272037 node_paths=PackedStringArray("referenced_enabler")]
+script = ExtResource("7_td8ue")
+referenced_enabler = NodePath("../Enabler")
+
+[node name="FlashlightArea" type="Area2D" parent="FlashlightRotator/Flashlight" unique_id=930097307]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FlashlightRotator/Flashlight/FlashlightArea" unique_id=2059537062]
+polygon = PackedVector2Array(-257, -4.21941, -227.273, -62.5, 204, -350.211, 205, 295.359, -227.273, 46.875)
+
+[node name="Node" type="Node" parent="FlashlightRotator/Flashlight/FlashlightArea" unique_id=425591765]
+script = ExtResource("11_3m754")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=855239631]
+visible = false
+offset_top = 6.0
+offset_right = 4.0
+offset_bottom = 33.0
+scale = Vector2(1.2, 0.993105)
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("8_ynt0t")
+value = 100.0
+script = ExtResource("9_km4ui")
+
+[node name="HideProgressBarTimer" type="Timer" parent="ProgressBar" unique_id=1251272918]
+
+[node name="FootSteps" type="AudioStreamPlayer2D" parent="." unique_id=2047798628]
+stream = ExtResource("15_0hljs")
+max_polyphony = 3
+bus = &"FootSteps"
+script = ExtResource("16_0hljs")
+
+[node name="ReverbEnabler" type="Node" parent="FootSteps" unique_id=734971717]
+script = ExtResource("17_w67ft")
+
+[node name="TotemParticelParent" parent="." unique_id=1984322711 instance=ExtResource("17_crkm8")]
+
+[node name="DeathAnimation" type="AnimatedSprite2D" parent="." unique_id=164958536]
+visible = false
+z_index = 10
+position = Vector2(0, -4)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_abqr1")
+animation = &"Death"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=440286098]
+z_index = 25
+energy = 0.15
+texture = ExtResource("19_qkam4")
+texture_scale = 3.0
+height = 75.0
+
+[connection signal="value_changed" from="ProgressBar" to="ProgressBar" method="_on_value_changed"]
+
+[editable path="TotemParticelParent"]

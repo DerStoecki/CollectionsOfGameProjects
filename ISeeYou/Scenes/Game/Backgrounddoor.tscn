@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwnp6bsfuwmlx"]
+
+[ext_resource type="PackedScene" uid="uid://btabkaiytppee" path="res://Scenes/Game/door.tscn" id="1_uk1fo"]
+[ext_resource type="Texture2D" uid="uid://b6eoot1hhlwr7" path="res://Assets/Images/Doors/basic_door.png" id="2_0ufg7"]
+
+[node name="BackgroundDoor" instance=ExtResource("1_uk1fo")]
+z_index = 6
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(-0.5, -13.25)
+
+[node name="InteractIcon" parent="InteractArea" index="1"]
+position = Vector2(0, -34)
+
+[node name="StaticBody2D" parent="." index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+disabled = true
+
+[node name="SpawnPoint" parent="." index="2"]
+position = Vector2(0, -6)
+
+[node name="Sprite2D" parent="." index="3"]
+position = Vector2(0, -16)
+scale = Vector2(0.181, 0.196)
+texture = ExtResource("2_0ufg7")

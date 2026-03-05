@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bhef70uwaaujy"]
+
+[ext_resource type="Shader" uid="uid://curjhwbmrig2m" path="res://Resources/Shader/Mover.gdshader" id="1_yprj8"]
+
+[resource]
+shader = ExtResource("1_yprj8")
+shader_parameter/speed = 0.009
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/overallAlphaAddValue = 0.0

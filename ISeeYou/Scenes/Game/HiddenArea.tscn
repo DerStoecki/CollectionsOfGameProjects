@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqvc71n8vq3ub"]
+
+[ext_resource type="Script" uid="uid://bomb0yso0mmtm" path="res://Scripts/Game/set_color_on_player_entry.gd" id="1_yw5i0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsqia"]
+size = Vector2(19, 20)
+
+[node name="Node" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 2
+z_index = 4
+offset_left = -354.0
+offset_top = 4.0
+offset_right = 127.0
+offset_bottom = 192.0
+color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+process_mode = 2
+z_index = 4
+offset_left = -352.0
+offset_top = 177.0
+offset_right = -161.0
+offset_bottom = 240.0
+color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+process_mode = 2
+z_index = 4
+offset_left = -114.0
+offset_top = 393.0
+offset_right = 102.0
+offset_bottom = 442.0
+rotation = -1.5708
+color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+
+[node name="SetInvisible" type="Area2D" parent="." node_paths=PackedStringArray("colorRects")]
+position = Vector2(-187, 233)
+collision_layer = 512
+collision_mask = 8
+script = ExtResource("1_yw5i0")
+colorToSet = Color(0.0784314, 0.0627451, 0.0745098, 0.462745)
+colorRects = [NodePath("../ColorRect"), NodePath("../ColorRect2"), NodePath("../ColorRect3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SetInvisible"]
+shape = SubResource("RectangleShape2D_hsqia")
+
+[node name="SetVisible" type="Area2D" parent="." node_paths=PackedStringArray("colorRects")]
+position = Vector2(73, -10)
+collision_layer = 512
+collision_mask = 8
+script = ExtResource("1_yw5i0")
+colorToSet = Color(0.08, 0.064, 0.076, 1)
+colorRects = [NodePath("../ColorRect"), NodePath("../ColorRect2"), NodePath("../ColorRect3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SetVisible"]
+shape = SubResource("RectangleShape2D_hsqia")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SetVisible"]
+position = Vector2(-177, 389)
+shape = SubResource("RectangleShape2D_hsqia")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="SetVisible"]
+position = Vector2(-227, 242)
+shape = SubResource("RectangleShape2D_hsqia")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="SetVisible"]
+position = Vector2(32, 191)
+shape = SubResource("RectangleShape2D_hsqia")
+
+[connection signal="body_entered" from="SetInvisible" to="SetInvisible" method="_on_body_entered"]
+[connection signal="body_entered" from="SetVisible" to="SetVisible" method="_on_body_entered"]

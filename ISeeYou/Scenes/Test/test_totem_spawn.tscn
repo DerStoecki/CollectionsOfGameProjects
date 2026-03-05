@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://p1qyvdnsnt7e"]
+
+[ext_resource type="PackedScene" uid="uid://ramxd8gihi66" path="res://Scenes/Game/random_room_id_to_totem_generator.tscn" id="1_a86xf"]
+[ext_resource type="PackedScene" uid="uid://cx7qekcmen61b" path="res://Scenes/Game/totem_spawner.tscn" id="2_hayyo"]
+[ext_resource type="FontFile" uid="uid://dbo534byskp1d" path="res://Assets/Fonts/Kenney Thick.ttf" id="3_7k4oi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ntnap"]
+font = ExtResource("3_7k4oi")
+
+[node name="TestTotemSpawn" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(7, 7)
+
+[node name="RandomRoomIdToTotemGenerator" parent="." instance=ExtResource("1_a86xf")]
+
+[node name="TotemSpawner" parent="." instance=ExtResource("2_hayyo")]
+
+[node name="Room_ID" type="Label" parent="TotemSpawner"]
+offset_left = -95.0
+offset_top = -54.0
+offset_right = -6.0
+offset_bottom = -36.0
+text = "Room 0"
+label_settings = SubResource("LabelSettings_ntnap")
+
+[node name="TotemSpawner2" parent="." instance=ExtResource("2_hayyo")]
+position = Vector2(124, -1)
+allocatedRoomId = 1
+
+[node name="Room_ID" type="Label" parent="TotemSpawner2"]
+offset_left = -95.0
+offset_top = -54.0
+offset_right = -6.0
+offset_bottom = -36.0
+text = "Room 1
+"
+label_settings = SubResource("LabelSettings_ntnap")
+
+[node name="TotemSpawner3" parent="." instance=ExtResource("2_hayyo")]
+position = Vector2(-5, 42)
+allocatedRoomId = 4
+
+[node name="Room_ID" type="Label" parent="TotemSpawner3"]
+offset_left = -95.0
+offset_top = -54.0
+offset_right = -6.0
+offset_bottom = -36.0
+text = "Room 4
+"
+label_settings = SubResource("LabelSettings_ntnap")
+
+[node name="TotemSpawner4" parent="." instance=ExtResource("2_hayyo")]
+position = Vector2(126, 42)
+allocatedRoomId = 18
+
+[node name="Room_ID" type="Label" parent="TotemSpawner4"]
+offset_left = -95.0
+offset_top = -54.0
+offset_right = -6.0
+offset_bottom = -36.0
+text = "Room 18
+"
+label_settings = SubResource("LabelSettings_ntnap")
+
+[node name="TotemSpawner5" parent="." instance=ExtResource("2_hayyo")]
+position = Vector2(-2, 92)
+allocatedRoomId = 12
+
+[node name="Room_ID" type="Label" parent="TotemSpawner5"]
+offset_left = -95.0
+offset_top = -54.0
+offset_right = -6.0
+offset_bottom = -36.0
+text = "Room 12
+"
+label_settings = SubResource("LabelSettings_ntnap")
+
+[node name="TotemSpawner6" parent="." instance=ExtResource("2_hayyo")]
+position = Vector2(125, 91)
+allocatedRoomId = 20
+
+[node name="Room_ID" type="Label" parent="TotemSpawner6"]
+offset_left = -95.0
+offset_top = -54.0
+offset_right = -6.0
+offset_bottom = -36.0
+text = "Room 20
+"
+label_settings = SubResource("LabelSettings_ntnap")
+
+[editable path="TotemSpawner"]
+[editable path="TotemSpawner2"]
+[editable path="TotemSpawner3"]
+[editable path="TotemSpawner4"]
+[editable path="TotemSpawner5"]
+[editable path="TotemSpawner6"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://blq2vskc6cpdd"]
+
+[ext_resource type="Material" uid="uid://bhef70uwaaujy" path="res://Resources/Shader/base_moving_shader.tres" id="1_lo3p0"]
+[ext_resource type="Texture2D" uid="uid://djatkjxqj0fxi" path="res://Assets/Images/StartScreen/Horizon/Sky/OnTop1.png" id="2_ixx23"]
+[ext_resource type="Texture2D" uid="uid://8apyfq8qj5" path="res://Assets/Images/StartScreen/Horizon/Clouds.png" id="3_2okyb"]
+
+[node name="SkyTexture" type="Sprite2D"]
+z_index = -1
+texture = ExtResource("2_ixx23")
+
+[node name="Clouds" type="Sprite2D" parent="."]
+material = ExtResource("1_lo3p0")
+position = Vector2(2.61224, -130)
+scale = Vector2(1.02214, 1)
+texture = ExtResource("3_2okyb")

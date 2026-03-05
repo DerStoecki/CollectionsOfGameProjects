@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cja5ui5828deo"]
+
+[ext_resource type="Texture2D" uid="uid://d3y6d3kqnexvg" path="res://icon.svg" id="1_ed1vs"]
+[ext_resource type="PackedScene" uid="uid://d32vcv5c4tr5y" path="res://Scenes/Entities/Enemy/path_2d_follow_enemy.tscn" id="2_m7c08"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya515"]
+size = Vector2(122, 123)
+
+[node name="TestSceneEnemies" type="Node"]
+
+[node name="Node2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 141)
+scale = Vector2(23.9686, 0.290221)
+collision_mask = 0
+
+[node name="Icon" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("1_ed1vs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_ya515")
+
+[node name="Path2dFollowEnemy" parent="." instance=ExtResource("2_m7c08")]
+
+[node name="Camera2D" type="Camera2D" parent="Path2dFollowEnemy"]
+zoom = Vector2(0.62, 0.62)

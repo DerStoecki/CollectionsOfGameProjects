@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx7qekcmen61b"]
+
+[ext_resource type="Script" uid="uid://ex1o3fgv81le" path="res://Scripts/Entities/Game/totem_spawner.gd" id="1_3kkgq"]
+
+[sub_resource type="Curve2D" id="Curve2D_3kkgq"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7, -36, 0, 0, 0, 0, -10, -35, 0, 0, 0, 0, -40, -34, 0, 0, 0, 0, -72, -33, 0, 0, 0, 0, -99, -34, 0, 0, 0, 0, -113, -40, 0, 0, 0, 0, -111, -56, 0, 0, 0, 0, -72, -61, 0, 0, 0, 0, 3, -60)
+}
+point_count = 9
+
+[node name="TotemSpawner" type="Node2D"]
+script = ExtResource("1_3kkgq")
+
+[node name="SpawnPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3kkgq")
+
+[node name="SpawnPathFollow" type="PathFollow2D" parent="SpawnPath"]
+position = Vector2(7, -36)
+rotation = 3.08284
+rotates = false

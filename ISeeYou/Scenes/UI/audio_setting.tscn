@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyhag2wxcjye3"]
+
+[ext_resource type="LabelSettings" uid="uid://okbp2dfnjtyr" path="res://Resources/UI/OptionsLabelSettings.tres" id="1_1kdt5"]
+[ext_resource type="FontFile" uid="uid://cly2srgq7ayai" path="res://Assets/Fonts/Kenney Mini Square.ttf" id="2_nn857"]
+[ext_resource type="Script" uid="uid://bwnolk4mncdaj" path="res://Scripts/UI/MainMenu/AudioSettingsSlider.gd" id="3_blkg5"]
+
+[sub_resource type="Theme" id="Theme_jkrry"]
+default_font = ExtResource("2_nn857")
+
+[node name="AudioSetting" type="VBoxContainer"]
+
+[node name="Tag" type="Label" parent="."]
+layout_mode = 2
+text = "MASTER"
+label_settings = ExtResource("1_1kdt5")
+
+[node name="HSlider" type="HSlider" parent="."]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = SubResource("Theme_jkrry")
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("3_blkg5")
+bus_name = "Master"

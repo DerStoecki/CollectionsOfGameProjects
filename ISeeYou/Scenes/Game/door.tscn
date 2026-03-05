@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://btabkaiytppee"]
+
+[ext_resource type="Script" uid="uid://b1yf0w0ywh4yp" path="res://Scripts/Game/door_flip_sprite.gd" id="1_2qq53"]
+[ext_resource type="Script" uid="uid://b3peru14k853o" path="res://Scripts/Game/interact_area.gd" id="1_gcutm"]
+[ext_resource type="PackedScene" uid="uid://b3tq7pplngyg8" path="res://Scenes/Game/InteractIcon/Interaction.tscn" id="2_fcvsx"]
+[ext_resource type="Script" uid="uid://bjmsj028jjtev" path="res://Scripts/Game/spawn_point.gd" id="3_2qq53"]
+[ext_resource type="Texture2D" uid="uid://dw0fi8bjfa24" path="res://Assets/Images/Doors/door_side.png" id="4_fcvsx"]
+[ext_resource type="Texture2D" uid="uid://bh4ds14i2jtcg" path="res://Assets/Images/StartScreen/Horizon/Moon.png" id="6_e0jna"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5kmh"]
+size = Vector2(20, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3bsw"]
+size = Vector2(6, 20)
+
+[sub_resource type="Gradient" id="Gradient_86lrf"]
+colors = PackedColorArray(0.113778, 0, 0.689086, 1, 1, 1, 1, 1)
+
+[node name="Door" type="Node2D"]
+z_index = 5
+script = ExtResource("1_2qq53")
+
+[node name="InteractArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 8
+script = ExtResource("1_gcutm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_i5kmh")
+
+[node name="InteractIcon" parent="InteractArea" instance=ExtResource("2_fcvsx")]
+position = Vector2(0, -27)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_w3bsw")
+
+[node name="SpawnPoint" type="Node2D" parent="." node_paths=PackedStringArray("interactArea")]
+position = Vector2(13, -6)
+script = ExtResource("3_2qq53")
+connectedToSpawnPointId = 1
+interactArea = NodePath("../InteractArea")
+nextScenePath = "res://Scenes/Level/EG/Foyer.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.03, -8)
+scale = Vector2(0.045, 0.1)
+texture = ExtResource("4_fcvsx")
+
+[node name="RoomHint" type="CPUParticles2D" parent="."]
+position = Vector2(0, -7)
+emitting = false
+amount = 15
+texture = ExtResource("6_e0jna")
+lifetime = 3.0
+speed_scale = 0.1
+explosiveness = 0.1
+randomness = 0.5
+lifetime_randomness = 0.25
+emission_shape = 3
+emission_rect_extents = Vector2(5, -2)
+spread = 50.0
+gravity = Vector2(0, -979)
+initial_velocity_min = 2.0
+initial_velocity_max = 15.0
+linear_accel_max = 5.0
+radial_accel_max = 10.0
+tangential_accel_max = 2.0
+angle_min = -10.0
+angle_max = 10.0
+scale_amount_min = 0.0
+scale_amount_max = 0.02
+color_ramp = SubResource("Gradient_86lrf")
+hue_variation_max = 0.7
+
+[connection signal="body_entered" from="InteractArea" to="InteractArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="InteractArea" method="_on_body_exited"]

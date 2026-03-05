@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://2fu3da1487s8"]
+
+[ext_resource type="Script" uid="uid://duuk7kios5jka" path="res://Scripts/UI/GameOverMenu/game_over_parent.gd" id="1_04ywq"]
+[ext_resource type="LabelSettings" uid="uid://psayq7jojcpf" path="res://Resources/UI/BasicLabelSetting.tres" id="2_0amsk"]
+[ext_resource type="FontFile" uid="uid://dbo534byskp1d" path="res://Assets/Fonts/Kenney Thick.ttf" id="3_msft2"]
+[ext_resource type="Script" uid="uid://cxy2x6qs1htf5" path="res://Scenes/UI/try_again_button.gd" id="4_04ywq"]
+[ext_resource type="Script" uid="uid://cfr2op1ycyvih" path="res://Scripts/UI/PauseMenu/exit_to_main_menu.gd" id="5_ww036"]
+[ext_resource type="Script" uid="uid://cgrbau8n8k812" path="res://Scripts/UI/GameOverMenu/GameSeed.gd" id="6_0amsk"]
+
+[node name="GameOverParent" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_04ywq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 2
+offset_right = 1922.0
+offset_bottom = 1075.0
+color = Color(0.804743, 0.804743, 0.804743, 0.337255)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+process_mode = 2
+offset_left = 363.0
+offset_top = 300.0
+offset_right = 1679.0
+offset_bottom = 738.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="GameOverTextLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "You died 
+during the events 
+of the haunted mansion
+"
+label_settings = ExtResource("2_0amsk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TryAgainButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_msft2")
+theme_override_font_sizes/font_size = 32
+text = "Try Again"
+script = ExtResource("4_04ywq")
+entryScreen = "res://Scenes/Level/EG/Foyer.tscn"
+metadata/_custom_type_script = "uid://kajx10dwee1v"
+
+[node name="ExitToMainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_msft2")
+theme_override_font_sizes/font_size = 32
+text = "Exit to Menu"
+script = ExtResource("5_ww036")
+metadata/_custom_type_script = "uid://kajx10dwee1v"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+GameSeed"
+label_settings = ExtResource("2_0amsk")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_0amsk")
+
+[connection signal="visibility_changed" from="." to="MarginContainer/VBoxContainer/Label2" method="_on_game_over_parent_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TryAgainButton" to="MarginContainer/VBoxContainer/TryAgainButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitToMainMenu" to="MarginContainer/VBoxContainer/ExitToMainMenu" method="_on_pressed"]

@@ -1,0 +1,45 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dj0sff41dmt5x"]
+
+[ext_resource type="Texture2D" uid="uid://dt0ce50olwrgd" path="res://Assets/Images/InteractButton/Base_Button_Interact_Xbox.png" id="1_itc3y"]
+[ext_resource type="Texture2D" uid="uid://bwb3q3u8pqe60" path="res://Assets/Images/InteractButton/Base_Button_Interact_Keyboard.png" id="2_4tmoa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dix44"]
+atlas = ExtResource("1_itc3y")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70hgt"]
+atlas = ExtResource("1_itc3y")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddlcn"]
+atlas = ExtResource("2_4tmoa")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84sx0"]
+atlas = ExtResource("2_4tmoa")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dix44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70hgt")
+}],
+"loop": false,
+"name": &"Controller_Interact",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddlcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84sx0")
+}],
+"loop": false,
+"name": &"Keyboard_Interact",
+"speed": 2.0
+}]

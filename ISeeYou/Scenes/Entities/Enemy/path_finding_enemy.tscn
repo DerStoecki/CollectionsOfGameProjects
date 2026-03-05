@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://jcqxv2o2526m"]
+
+[ext_resource type="PackedScene" uid="uid://x2ebmcf2pvy1" path="res://Scenes/Entities/Enemy/base_enemy.tscn" id="1_4cc3e"]
+[ext_resource type="Script" uid="uid://bnechh5payrny" path="res://Scripts/Entities/Enemy/path_finding_enemy.gd" id="1_in8oo"]
+[ext_resource type="Script" uid="uid://jhoqrkjfl4gl" path="res://Scripts/Entities/Enemy/EnemyEnabler.gd" id="3_nomw8"]
+
+[node name="PathFindingEnemy" type="Node2D" groups=["Enemy"]]
+script = ExtResource("1_in8oo")
+
+[node name="BaseEnemy" parent="." instance=ExtResource("1_4cc3e")]
+
+[node name="GhostShadow" parent="BaseEnemy" index="0"]
+rotation = 0.0
+
+[node name="GhostSprite" parent="BaseEnemy" index="1"]
+rotation = 0.0
+
+[node name="CollisionShape2D" parent="BaseEnemy/PlayerDetectorArea" index="0"]
+z_index = 5
+position = Vector2(0, 0)
+
+[node name="MovementCondition" parent="BaseEnemy" index="3"]
+base_speed = 50.0
+slowed_speed = 20.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+simplify_path = true
+debug_enabled = true
+debug_path_custom_color = Color(0.82881, 2.71939e-06, 5.77569e-07, 1)
+
+[node name="Timer" type="Timer" parent="NavigationAgent2D"]
+autostart = true
+
+[node name="EnemyEnabler" type="Node" parent="." node_paths=PackedStringArray("pathFindingEnemy", "enemyAudio") groups=["EnemyEnabler"]]
+script = ExtResource("3_nomw8")
+pathFindingEnemy = NodePath("..")
+enemyAudio = NodePath("../BaseEnemy/EnemyAudio")
+metadata/_custom_type_script = "uid://jhoqrkjfl4gl"
+
+[connection signal="timeout" from="NavigationAgent2D/Timer" to="." method="_on_timer_timeout"]
+
+[editable path="BaseEnemy"]

@@ -1,0 +1,19 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://bmsc6k2m6xvw3"]
+
+[ext_resource type="AudioStream" uid="uid://ba65tgf1ncjkl" path="res://Assets/ExternalAssets/EnemyStep/Stepbeast 1.mp3" id="1_hyql3"]
+[ext_resource type="AudioStream" uid="uid://kne5asax45r5" path="res://Assets/ExternalAssets/EnemyStep/Stepbeast 2.mp3" id="2_v8wnt"]
+[ext_resource type="AudioStream" uid="uid://desqhxtcud1mp" path="res://Assets/ExternalAssets/EnemyStep/Stepbeast 3.mp3" id="3_ya402"]
+[ext_resource type="AudioStream" uid="uid://c8rnpaa7okgiq" path="res://Assets/ExternalAssets/EnemyStep/Stepbeast 4.mp3" id="4_rmmf2"]
+[ext_resource type="AudioStream" uid="uid://piwp8cbqfbvu" path="res://Assets/ExternalAssets/EnemyStep/Stepbeast 5.mp3" id="5_k1tu1"]
+[ext_resource type="AudioStream" uid="uid://dabxkrwmies1g" path="res://Assets/ExternalAssets/EnemyStep/Stepbeast 6.mp3" id="6_osdqw"]
+
+[resource]
+random_pitch = 1.5
+random_volume_offset_db = 0.1
+streams_count = 6
+stream_0/stream = ExtResource("1_hyql3")
+stream_1/stream = ExtResource("2_v8wnt")
+stream_2/stream = ExtResource("3_ya402")
+stream_3/stream = ExtResource("4_rmmf2")
+stream_4/stream = ExtResource("5_k1tu1")
+stream_5/stream = ExtResource("6_osdqw")

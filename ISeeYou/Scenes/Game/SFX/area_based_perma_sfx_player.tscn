@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bniq4qtjc8cki"]
+
+[node name="AreaBasedPermaSFXPlayer" type="AudioStreamPlayer2D"]
+autoplay = true
+max_distance = 200.0
+attenuation = 2.54912
+bus = &"SFX"

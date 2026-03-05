@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ramxd8gihi66"]
+
+[ext_resource type="Script" uid="uid://bfsio0yk866hw" path="res://Scripts/Entities/Game/random_room_id_to_totem_generator.gd" id="1_xohnb"]
+
+[node name="RandomRoomIdToTotemGenerator" type="Node" groups=["RandomRoomIdToTotemGenerator"]]
+script = ExtResource("1_xohnb")
+roomMaxRange = 20

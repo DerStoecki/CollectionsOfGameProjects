@@ -1,0 +1,111 @@
+[gd_scene load_steps=16 format=3 uid="uid://x2ebmcf2pvy1"]
+
+[ext_resource type="Texture2D" uid="uid://cx41vwleekxk8" path="res://Assets/Images/Ghost/GhostShadow.png" id="1_xk562"]
+[ext_resource type="Texture2D" uid="uid://d121j2vbox3nk" path="res://Assets/Images/Ghost/Ghost.png" id="2_okbt1"]
+[ext_resource type="Script" uid="uid://bvg2y1jsxmnca" path="res://Scripts/Entities/Enemy/flashlight_collision.gd" id="3_fxo42"]
+[ext_resource type="Script" uid="uid://c05uefsfib8a3" path="res://Scripts/Entities/Enemy/player_detector_area.gd" id="4_wjtkc"]
+[ext_resource type="Script" uid="uid://uaf3ahsha2je" path="res://Scripts/Entities/Enemy/movement_condition_handler.gd" id="5_okbt1"]
+[ext_resource type="Shader" uid="uid://dmjv4fnppekrg" path="res://Resources/Shader/base_enemy_distort.gdshader" id="6_fxo42"]
+[ext_resource type="Script" uid="uid://c2tg3h3jkr2ur" path="res://Scripts/Entities/Enemy/distortioneffect_enemy.gd" id="7_wjtkc"]
+[ext_resource type="AudioStream" uid="uid://bmsc6k2m6xvw3" path="res://Resources/SFX/FootSteps/Enemy_FootSteps_Randomizer.tres" id="8_w5v7h"]
+[ext_resource type="Script" uid="uid://c4lmx1cawie3" path="res://Scripts/Entities/Enemy/enemy_audio.gd" id="9_q2a2u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjgja"]
+size = Vector2(172, 180)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wpjfc"]
+radius = 30.0002
+height = 70.0005
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fxo42"]
+seed = 83362
+frequency = 0.015
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wjtkc"]
+seamless = true
+seamless_blend_skirt = 0.52
+noise = SubResource("FastNoiseLite_fxo42")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wjtkc"]
+shader = ExtResource("6_fxo42")
+shader_parameter/distortionTexture = SubResource("NoiseTexture2D_wjtkc")
+shader_parameter/scroll = Vector2(0.1, 0.1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_phlqb"]
+resource_local_to_scene = true
+
+[node name="BaseEnemy" type="Node2D"]
+z_index = 10
+
+[node name="GhostShadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+z_index = 10
+rotation = 0.00881034
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_xk562")
+
+[node name="GhostSprite" type="Sprite2D" parent="."]
+visible = false
+z_index = 10
+rotation = 0.00881034
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_okbt1")
+
+[node name="FlashlightArea" type="Area2D" parent="GhostSprite"]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("3_fxo42")
+
+[node name="FlashlightCollisionShape" type="CollisionShape2D" parent="GhostSprite/FlashlightArea"]
+position = Vector2(-1, -3)
+shape = SubResource("RectangleShape2D_vjgja")
+
+[node name="Timer" type="Timer" parent="GhostSprite/FlashlightArea"]
+wait_time = 3.0
+one_shot = true
+
+[node name="PlayerDetectorArea" type="Area2D" parent="."]
+visible = false
+scale = Vector2(0.2, 0.2)
+collision_layer = 32
+collision_mask = 8
+script = ExtResource("4_wjtkc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectorArea"]
+z_index = 11
+position = Vector2(-0.0528614, 1)
+shape = SubResource("CapsuleShape2D_wpjfc")
+
+[node name="MovementCondition" type="Node" parent="."]
+script = ExtResource("5_okbt1")
+slowed_speed = 0.03
+time_to_apply_slow = 0.5
+slow_recovery = 2.0
+time_to_apply_freeze = 3.0
+freeze_recovery = 5.0
+
+[node name="Distortion" type="MeshInstance2D" parent="."]
+z_index = 10
+material = SubResource("ShaderMaterial_wjtkc")
+position = Vector2(5.96046e-08, 0)
+scale = Vector2(14, -13)
+mesh = SubResource("QuadMesh_phlqb")
+texture = ExtResource("2_okbt1")
+script = ExtResource("7_wjtkc")
+
+[node name="EnemyAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_w5v7h")
+volume_db = -1.0
+max_distance = 200.0
+bus = &"SFX"
+script = ExtResource("9_q2a2u")
+
+[connection signal="area_entered" from="GhostSprite/FlashlightArea" to="GhostSprite/FlashlightArea" method="_on_area_entered"]
+[connection signal="area_exited" from="GhostSprite/FlashlightArea" to="GhostSprite/FlashlightArea" method="_on_area_exited"]
+[connection signal="entered_flashlight" from="GhostSprite/FlashlightArea" to="MovementCondition" method="_on_flashlight_area_entered_flashlight"]
+[connection signal="entered_flashlight" from="GhostSprite/FlashlightArea" to="Distortion" method="_on_flashlight_area_entered_flashlight"]
+[connection signal="exited_flashlight" from="GhostSprite/FlashlightArea" to="MovementCondition" method="_on_flashlight_area_exited_flashlight"]
+[connection signal="timeout" from="GhostSprite/FlashlightArea/Timer" to="GhostSprite/FlashlightArea" method="_on_timer_timeout"]
+[connection signal="timeout" from="GhostSprite/FlashlightArea/Timer" to="Distortion" method="_on_timer_timeout"]
+[connection signal="body_entered" from="PlayerDetectorArea" to="PlayerDetectorArea" method="_on_body_entered"]
+[connection signal="finished" from="EnemyAudio" to="EnemyAudio" method="_on_finished"]

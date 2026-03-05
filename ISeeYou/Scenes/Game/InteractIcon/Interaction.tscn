@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3tq7pplngyg8"]
+
+[ext_resource type="SpriteFrames" uid="uid://dj0sff41dmt5x" path="res://Resources/InteractButton/interactbutton_sprite_frames.tres" id="1_ct8r1"]
+[ext_resource type="Script" uid="uid://b628aewrcwwls" path="res://Scripts/Game/interact_icon_changer.gd" id="2_4631f"]
+
+[node name="InteractIcon" type="AnimatedSprite2D"]
+visible = false
+z_index = 20
+sprite_frames = ExtResource("1_ct8r1")
+animation = &"Keyboard_Interact"
+script = ExtResource("2_4631f")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

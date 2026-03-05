@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Health" load_steps=2 format=3 uid="uid://dnmva6ycoiv06"]
+
+[ext_resource type="Script" uid="uid://5baktvktru5q" path="res://Scripts/Entities/Player/health.gd" id="1_s3gv7"]
+
+[resource]
+script = ExtResource("1_s3gv7")
+state = 0

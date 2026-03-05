@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctiy30jt4t22h"]
+
+[ext_resource type="Texture2D" uid="uid://d3y6d3kqnexvg" path="res://icon.svg" id="1_cguwc"]
+[ext_resource type="PackedScene" uid="uid://ccbmec7cwkts8" path="res://Scenes/Entities/Player.tscn" id="2_wicfy"]
+[ext_resource type="PackedScene" uid="uid://bfb5a2u1sflqw" path="res://Scenes/UI/ui_in_game.tscn" id="3_wicfy"]
+[ext_resource type="PackedScene" uid="uid://d32vcv5c4tr5y" path="res://Scenes/Entities/path_2d_follow_enemy.tscn" id="4_go42g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cguwc"]
+size = Vector2(122, 123)
+
+[node name="Root" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("2_wicfy")]
+
+[node name="Camera2D" parent="Player" index="4"]
+zoom = Vector2(1.01, 1.01)
+
+[node name="Node2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 141)
+scale = Vector2(23.9686, 0.290221)
+collision_mask = 0
+
+[node name="Icon" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("1_cguwc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_cguwc")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(27, -531)
+scale = Vector2(50, 50)
+texture = ExtResource("1_cguwc")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_wicfy")]
+
+[node name="PlayerState" parent="CanvasLayer" index="0" node_paths=PackedStringArray("player")]
+player = NodePath("../../Player")
+
+[node name="Healthy" parent="CanvasLayer/PlayerState" index="1"]
+visibleState = null
+
+[node name="FlashLight" parent="CanvasLayer" index="1" node_paths=PackedStringArray("flashlight", "energy")]
+flashlight = NodePath("../../Player/FlashlightRotator/Flashlight/Enabler")
+energy = NodePath("../../Player/FlashlightRotator/Flashlight/Stamina_Flashlight")
+
+[node name="OutOfOrder" parent="CanvasLayer/FlashLight" index="4"]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 110.0
+offset_bottom = 99.0
+
+[node name="Path2dFollowEnemy" parent="." instance=ExtResource("4_go42g")]
+position = Vector2(602, 0)
+
+[editable path="Player"]
+[editable path="CanvasLayer"]

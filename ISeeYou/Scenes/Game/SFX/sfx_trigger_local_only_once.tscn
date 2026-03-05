@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp6wvuo5n64k7"]
+
+[ext_resource type="Script" uid="uid://dhpk5m4q6d3xu" path="res://Scripts/Entities/Game/SFX/sfx_trigger_local.gd" id="1_ijrhs"]
+[ext_resource type="Script" uid="uid://b70n5qdskpix3" path="res://Scripts/Entities/Game/SFX/audio_trigger_area_based.gd" id="2_0iv2f"]
+[ext_resource type="AudioStream" uid="uid://ckjyv2gmdll3l" path="res://Assets/SFX/Environment/Scary_SFX.wav" id="2_sce8g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sce8g"]
+
+[node name="SFX_Trigger_Once" type="Node2D"]
+z_index = 1
+script = ExtResource("1_ijrhs")
+audio = ExtResource("2_sce8g")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_sce8g")
+
+[node name="AudioTrigger" type="AudioStreamPlayer2D" parent="Area2D"]
+max_distance = 250.0
+bus = &"SFX"
+script = ExtResource("2_0iv2f")
+randomPitchRange = 0.1
+
+[connection signal="body_entered" from="Area2D" to="Area2D/AudioTrigger" method="_on_area_2d_body_entered"]
+[connection signal="finished" from="Area2D/AudioTrigger" to="Area2D/AudioTrigger" method="_on_finished"]
