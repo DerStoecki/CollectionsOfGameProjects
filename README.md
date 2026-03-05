@@ -73,16 +73,16 @@ Here are some images
 
 I wanted to make the startscreen somewhat interactive. You can click on certain parts of the main characters jacket to trigger animations instead of plain "buttons". You can start your journey, leave, open options, or click on his notepad to get a "tutorial". I sadly hadn't the time to create an interactive tutorial.
 
-<img src="/showcase/iseeyou/StartScreen.png" alt="Start Screen" width = 300><img src="/showcase/iseeyou/NewGame.png" alt="Start Menu" width = 300>
+<img src="/showcase/iseeyou/startscreen.png" alt="Start Screen" width = 300><img src="/showcase/iseeyou/NewGame.png" alt="Start Menu" width = 300>
 
 ### In the mansion
 
-<img src="/showcase/iseeyou/Beginning.png" alt="Showing the start position in the mansion" width = 300><img src="/showcase/iseeyou/Flashlight.png" alt="Showing your weapon of choice...the flashlight" width = 300>
+<img src="/showcase/iseeyou/beginning.png" alt="Showing the start position in the mansion" width = 300><img src="/showcase/iseeyou/Flashlight.png" alt="Showing your weapon of choice...the flashlight" width = 300>
 
 
 ### Finding a totem
 
-<img src="/showcase/iseeyou/FindingTotem.png" alt="Finding a totem, but flashlight is needed" width = 300><img src="/showcase/iseeyou/FindingTotem2.png" alt="Showcase: Flashlight is lighting up hidden totems" width = 300>
+<img src="/showcase/iseeyou/findingtotem.png" alt="Finding a totem, but flashlight is needed" width = 300><img src="/showcase/iseeyou/findingtotem2.png" alt="Showcase: Flashlight is lighting up hidden totems" width = 300>
 
 
 #### Ghosts
@@ -115,9 +115,9 @@ Try to avoid Tuna and Poison, while also evading various kitchen clutter and a r
 
 This is a simple 1 Scene game
 
-### Start Start
+### Start
 
-<img src="/showcase/toastjump/StartScreen.png" alt="Start Screen of the game" width = 300>
+<img src="/showcase/toastjump/startscreen.png" alt="Start Screen of the game" width = 300>
 
 ### Aim
 
@@ -129,11 +129,11 @@ I also implemented a sprint and doublejump mechanic.
 
 To prevent instant overwhelm, I started with some timers. The player has time to collect some "good" collectibles, and the game gets harder over time by spawning more and more dangerous items.
 
-<img src="/showcase/toastjump/ToastJump.png" alt="Some Game Footage" width = 300>
-<img src="/showcase/toastjump/ToastJump2.png" alt="Some Game Footage" width = 300><br>
-<img src="/showcase/toastjump/ToastJump3.png" alt="Some Game Footage" width = 300>
-<img src="/showcase/toastjump/ToastJump4.png" alt="Some Game Footage" width = 300><br>
-<img src="/showcase/toastjump/ToastJump5.png" alt="Some Game Footage" width = 300>
+<img src="/showcase/toastjump/toastjump.png" alt="Some Game Footage" width = 300>
+<img src="/showcase/toastjump/toastjump2.png" alt="Some Game Footage" width = 300><br>
+<img src="/showcase/toastjump/toastjump3.png" alt="Some Game Footage" width = 300>
+<img src="/showcase/toastjump/toastjump4.png" alt="Some Game Footage" width = 300><br>
+<img src="/showcase/toastjump/toastjump5.png" alt="Some Game Footage" width = 300>
 
 
 ### Game over
@@ -141,7 +141,7 @@ To prevent instant overwhelm, I started with some timers. The player has time to
 When you loose all your hearts, you can set your score and save it, arcade style with 3 letters.
 Note: The moment you loose all your hearts, the scene gets paused, which can cause hilarious images of toasty.
 
-<img src="/showcase/toastjump/GameOver.png" alt="Some Game Footage" width = 300>
+<img src="/showcase/toastjump/gameover.png" alt="Some Game Footage" width = 300>
 
 
 #### learnings
@@ -185,20 +185,20 @@ If you want to, you can but you shouldn't...but you can certainly try.
 
 #### Start Screen an World/Stage-select
 <p>
-<img src="/showcase/NecroMancerDefense/StartScreen.png" alt="Some showcase of the prototype stage" width = 300><br><br>
-<img src="/showcase/NecroMancerDefense/World_Select.png" alt="Some showcase of the prototype stage" width = 300>
-<img src="/showcase/NecroMancerDefense/World_Select_Description.png" alt="Some showcase of the prototype stage" width = 300><br><br>
-<img src="/showcase/NecroMancerDefense/StageSelect.png" alt="Some showcase of the prototype stage" width = 300>
-<img src="/showcase/NecroMancerDefense/Stage_Select_Hover.png" alt="Some showcase of the prototype stage" width = 300>
+<img src="/showcase/necromancerdefense/startscreen.png" alt="Some showcase of the prototype stage" width = 300><br><br>
+<img src="/showcase/necromancerdefense/world_select.png" alt="Some showcase of the prototype stage" width = 300>
+<img src="/showcase/necromancerdefense/world_select_description.png" alt="Some showcase of the prototype stage" width = 300><br><br>
+<img src="/showcase/necromancerdefense/stageselect.png" alt="Some showcase of the prototype stage" width = 300>
+<img src="/showcase/necromancerdefense/stage_select_hover.png" alt="Some showcase of the prototype stage" width = 300>
 </p>
 
 #### Level
 
 <p>Showing the prototype of a tutorial level -> only one lane is accessable.</p>
 
-<img src="/showcase/NecroMancerDefense/PrepareLevel_ZombieSelect.png" alt="Zombie selection" width = 300>
-<img src="/showcase/NecroMancerDefense/PlacingYourZombies.png" alt="Zombie placement" width = 300><br>
-<img src="/showcase/NecroMancerDefense/Attacks.png" alt="attack showcases" width = 300>
+<img src="/showcase/necromancerdefense/preparelevel_zombieselect.png" alt="Zombie selection" width = 300>
+<img src="/showcase/necromancerdefense/placingyourzombies.png" alt="Zombie placement" width = 300><br>
+<img src="/showcase/necromancerdefense/attacks.png" alt="attack showcases" width = 300>
 
 
 
@@ -219,12 +219,12 @@ You get a preview of the quality so you know in advance if it is good to place a
 
 #### Good vs Bad Spot
 
-<img src="/showcase/Kuhlifumdenteich/SpotQuality_BAD.png" alt="Some showcase of the prototype stage" width = 300>
-<img src="/showcase/Kuhlifumdenteich/SpotQuality_GREAT.png" alt="Some showcase of the prototype stage" width = 300>
+<img src="/showcase/kuhlifumdenteich/spotquality_bad.png" alt="Some showcase of the prototype stage" width = 300>
+<img src="/showcase/kuhlifumdenteich/spotquality_great.png" alt="Some showcase of the prototype stage" width = 300>
 
 ## Placed Buildings
 
-<img src="/showcase/Kuhlifumdenteich/Buildings.png" alt="Some showcase of the prototype stage" width = 300>
+<img src="/showcase/kuhlifumdenteich/buildings.png" alt="Some showcase of the prototype stage" width = 300>
 
 
 ##### Learnings
