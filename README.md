@@ -73,11 +73,11 @@ Here are some images
 
 I wanted to make the startscreen somewhat interactive. You can click on certain parts of the main characters jacket to trigger animations instead of plain "buttons". You can start your journey, leave, open options, or click on his notepad to get a "tutorial". I sadly hadn't the time to create an interactive tutorial.
 
-<img src="/showcase/iseeyou/startscreen.png" alt="Start Screen" width = 300><img src="/showcase/iseeyou/NewGame.png" alt="Start Menu" width = 300>
+<img src="/showcase/iseeyou/startscreen.png" alt="Start Screen" width = 300><img src="/showcase/iseeyou/newgame.png" alt="Start Menu" width = 300>
 
 ### In the mansion
 
-<img src="/showcase/iseeyou/beginning.png" alt="Showing the start position in the mansion" width = 300><img src="/showcase/iseeyou/Flashlight.png" alt="Showing your weapon of choice...the flashlight" width = 300>
+<img src="/showcase/iseeyou/beginning.png" alt="Showing the start position in the mansion" width = 300><img src="/showcase/iseeyou/flashlight.png" alt="Showing your weapon of choice...the flashlight" width = 300>
 
 
 ### Finding a totem
