@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://050wnry66cd3"]
+
+[ext_resource type="PackedScene" uid="uid://gscvo0v14bw2" path="res://Scenes/Entities/player.tscn" id="1_x828v"]
+[ext_resource type="Texture2D" uid="uid://6rlca677nuy4" path="res://icon.svg" id="2_x828v"]
+[ext_resource type="Script" uid="uid://b18pdrw1joo7c" path="res://Scripts/World/CeilHooks/ceil_hook_point.gd" id="3_jimmk"]
+[ext_resource type="PackedScene" uid="uid://b5eelxf7hedcr" path="res://Scenes/Entities/grappling_hook_root.tscn" id="4_ml2kl"]
+[ext_resource type="PackedScene" uid="uid://e4al1t1ckhxd" path="res://Scenes/Entities/Platforming/RotationPlattforms/base_rotating_plattform.tscn" id="5_18uev"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jimmk"]
+size = Vector2(129, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2nkn"]
+size = Vector2(129, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x828v"]
+size = Vector2(247, 328)
+
+[node name="Root" type="Node" unique_id=682794253]
+
+[node name="Player" parent="." unique_id=1616740674 instance=ExtResource("1_x828v")]
+position = Vector2(8, -19)
+dragDownForce = 0.65
+baseJumpVelocity = -800
+minVelocityApplyDragForce = -150.0
+
+[node name="Jumper" parent="Player" index="6" unique_id=914761379]
+jumpBufferTime = 0.1
+
+[node name="RayCast2D" parent="Player/WallDetector" parent_id_path=PackedInt32Array(1616740674, 171964580) index="0" unique_id=875610785]
+collide_with_bodies = true
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=312055890]
+position = Vector2(0, 64)
+scale = Vector2(37.4286, 0.821596)
+
+[node name="Icon" type="Sprite2D" parent="Floor" unique_id=2058380202]
+texture = ExtResource("2_x828v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=376227054]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_jimmk")
+
+[node name="Wall_Right" type="StaticBody2D" parent="." unique_id=1337686482]
+position = Vector2(2485, -2314)
+rotation = 1.5708
+scale = Vector2(37.4286, 0.821596)
+collision_layer = 9
+collision_mask = 0
+
+[node name="Icon" type="Sprite2D" parent="Wall_Right" unique_id=1417359346]
+texture = ExtResource("2_x828v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Right" unique_id=399396924]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_k2nkn")
+
+[node name="Wall_Left" type="StaticBody2D" parent="." unique_id=1540792264]
+position = Vector2(-2453, -2269)
+rotation = -1.5708
+scale = Vector2(37.4286, 0.821596)
+collision_layer = 9
+collision_mask = 0
+
+[node name="Icon" type="Sprite2D" parent="Wall_Left" unique_id=607319638]
+texture = ExtResource("2_x828v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Left" unique_id=130107850]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_k2nkn")
+
+[node name="Ceiling" type="StaticBody2D" parent="." unique_id=59386651]
+position = Vector2(-57, -623)
+scale = Vector2(37.4286, 0.821596)
+collision_layer = 9
+collision_mask = 0
+
+[node name="Icon" type="Sprite2D" parent="Ceiling" unique_id=2142201034]
+texture = ExtResource("2_x828v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling" unique_id=812139133]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_k2nkn")
+
+[node name="CeilHooks" type="Node2D" parent="." unique_id=1149508531]
+position = Vector2(0, -570)
+
+[node name="CeilHookPoint" type="StaticBody2D" parent="CeilHooks" unique_id=1587168507]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("3_jimmk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CeilHooks/CeilHookPoint" unique_id=1525283690]
+position = Vector2(0, 164)
+shape = SubResource("RectangleShape2D_x828v")
+
+[node name="ConnectPoint" type="Node2D" parent="CeilHooks/CeilHookPoint" unique_id=402110942]
+position = Vector2(-1, 70)
+
+[node name="GrapplingHookRoot" parent="." unique_id=567691815 node_paths=PackedStringArray("player", "ceilHookDetector") instance=ExtResource("4_ml2kl")]
+position = Vector2(1, -567)
+player = NodePath("../Player")
+ceilHookDetector = NodePath("../Player/CeilHookDetector")
+swingSpeed = 2500.0
+min_rope_length = 25.0
+
+[node name="RotatingPlattform" parent="." unique_id=843500501 instance=ExtResource("5_18uev")]
+position = Vector2(-455, -259)
+
+[editable path="Player"]
+[editable path="RotatingPlattform"]

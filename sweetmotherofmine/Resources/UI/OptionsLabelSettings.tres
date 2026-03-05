@@ -1,0 +1,13 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://okbp2dfnjtyr"]
+
+[ext_resource type="FontFile" uid="uid://dbo534byskp1d" path="res://Assets/Fonts/Kenney Thick.ttf" id="1_fd3m3"]
+
+[resource]
+line_spacing = 2.0
+font = ExtResource("1_fd3m3")
+font_size = 32
+outline_size = 4
+outline_color = Color(0, 0.0156863, 0.192157, 1)
+shadow_size = 6
+shadow_color = Color(0.0705882, 0.12549, 0.129412, 1)
+shadow_offset = Vector2(2.15, 2.55)

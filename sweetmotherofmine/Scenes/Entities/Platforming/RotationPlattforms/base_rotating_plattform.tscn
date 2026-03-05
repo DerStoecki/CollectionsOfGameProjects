@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://e4al1t1ckhxd"]
+
+[ext_resource type="Texture2D" uid="uid://6rlca677nuy4" path="res://icon.svg" id="1_ga8ek"]
+[ext_resource type="Script" uid="uid://cgk2cnuj0tjuh" path="res://Scenes/Entities/Platforming/RotationPlattforms/base_rotating_plattform.gd" id="1_io2qk"]
+[ext_resource type="Texture2D" uid="uid://gdxlosq27kxa" path="res://Assets/Sprites/Characters/Player/rope/rope_2.png" id="3_nekqo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga8ek"]
+size = Vector2(128, 127)
+
+[node name="Anchor" type="Node2D"]
+script = ExtResource("1_io2qk")
+
+[node name="RotatingPlatform" type="AnimatableBody2D" parent="."]
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="RotatingPlatform"]
+texture = ExtResource("1_ga8ek")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RotatingPlatform"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ga8ek")
+
+[node name="Line2D" type="Line2D" parent="."]
+show_behind_parent = true
+texture_repeat = 2
+texture = ExtResource("3_nekqo")
+texture_mode = 1

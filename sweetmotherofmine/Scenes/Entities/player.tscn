@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://gscvo0v14bw2"]
+
+[ext_resource type="Script" uid="uid://bjxm40bxj6r7u" path="res://Scripts/Player/PlayerNode/player.gd" id="1_a1rq5"]
+[ext_resource type="Texture2D" uid="uid://bnqku6c80rdrs" path="res://Assets/Sprites/Characters/Player/MainCharakter.png" id="2_yqx0t"]
+[ext_resource type="Script" uid="uid://b2u7lqjet2oit" path="res://Scripts/Player/Movement/Movement/mover.gd" id="3_ofjh0"]
+[ext_resource type="Script" uid="uid://dlw7jhdvdnq6p" path="res://Scripts/Player/Movement/Jumper/jumper.gd" id="4_2hnfo"]
+[ext_resource type="Script" uid="uid://bddapheixqkqw" path="res://Scripts/Player/Movement/WallHook/wall_detector.gd" id="5_y18yp"]
+[ext_resource type="Script" uid="uid://b6xncsqpmif6o" path="res://Scripts/Player/Movement/CeilHook/ceil_detector.gd" id="6_yqx0t"]
+[ext_resource type="Script" uid="uid://l5xpro4twojd" path="res://Scripts/Player/Attack/attack_handler.gd" id="7_2hnfo"]
+[ext_resource type="Script" uid="uid://kwumml1lqcje" path="res://Scripts/Player/Attack/melee_handler.gd" id="8_y18yp"]
+[ext_resource type="Script" uid="uid://dq0jfoek8an6k" path="res://Scripts/Player/Attack/magic_handler.gd" id="9_y18yp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x828v"]
+radius = 11.0
+height = 52.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jimmk"]
+radius = 2.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k2nkn"]
+radius = 3.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bibgh"]
+radius = 17.0
+height = 36.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1099217637]
+process_priority = 1
+process_physics_priority = 1
+collision_layer = 128
+collision_mask = 15
+script = ExtResource("1_a1rq5")
+able_to_doubleJump = true
+able_to_wall_hook = true
+able_to_ceil_hook = true
+allowed_to_jump = true
+allowed_to_move = true
+dragDownForce = 0.8
+wallJumpDelayTime = 0.1
+ceilJumpDelayTime = 0.1
+baseMovSpeed = 1500
+baseJumpVelocity = -400
+minVelocityApplyDragForce = -50.0
+
+[node name="MainCharakter" type="Sprite2D" parent="." unique_id=915946275]
+texture = ExtResource("2_yqx0t")
+
+[node name="PlayerHealth" type="Area2D" parent="." unique_id=1680880961]
+collision_layer = 256
+collision_mask = 512
+
+[node name="Hitbox" type="CollisionShape2D" parent="PlayerHealth" unique_id=1703768377]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_x828v")
+
+[node name="Floor" type="CollisionShape2D" parent="." unique_id=146731679]
+position = Vector2(0, 28)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jimmk")
+
+[node name="Ceil" type="CollisionShape2D" parent="." unique_id=1811716561]
+position = Vector2(0, -22)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_k2nkn")
+
+[node name="Walls" type="CollisionShape2D" parent="." unique_id=2016960312]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_bibgh")
+
+[node name="Mover" type="Node" parent="." unique_id=940522352 node_paths=PackedStringArray("flippableXNodes")]
+process_physics_priority = -2
+script = ExtResource("3_ofjh0")
+flippableXNodes = [NodePath("../MainCharakter"), NodePath("../WallDetector/RayCast2D"), NodePath("../PlayerHealth")]
+
+[node name="Jumper" type="Node" parent="." unique_id=914761379]
+process_physics_priority = -2
+script = ExtResource("4_2hnfo")
+reducedWallJumpSpeed = 1.5
+reducedDoubleJumpSpeed = 0.9
+jumpBufferTime = 0.15
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2048170388]
+position = Vector2(0, -76)
+zoom = Vector2(0.8, 0.8)
+
+[node name="WallDetector" type="Node2D" parent="." unique_id=171964580]
+script = ExtResource("5_y18yp")
+
+[node name="RayCast2D" type="RayCast2D" parent="WallDetector" unique_id=875610785]
+z_index = 1
+position = Vector2(0, 11)
+target_position = Vector2(18, 0)
+collision_mask = 8
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="CeilHookDetector" type="Node2D" parent="." unique_id=1240022162]
+script = ExtResource("6_yqx0t")
+
+[node name="Up" type="RayCast2D" parent="CeilHookDetector" unique_id=1980588204]
+target_position = Vector2(0, -354)
+collision_mask = 64
+hit_from_inside = true
+
+[node name="Left" type="RayCast2D" parent="CeilHookDetector" unique_id=862790640]
+target_position = Vector2(-193, -334)
+collision_mask = 64
+hit_from_inside = true
+
+[node name="MiddleLeft" type="RayCast2D" parent="CeilHookDetector" unique_id=78715862]
+target_position = Vector2(-91, -342)
+collision_mask = 64
+hit_from_inside = true
+
+[node name="Right" type="RayCast2D" parent="CeilHookDetector" unique_id=1343957725]
+scale = Vector2(-1, 1)
+target_position = Vector2(-206, -338)
+collision_mask = 64
+hit_from_inside = true
+
+[node name="MiddleRight" type="RayCast2D" parent="CeilHookDetector" unique_id=1306550158]
+scale = Vector2(-1, 1)
+target_position = Vector2(-91, -342)
+collision_mask = 64
+hit_from_inside = true
+
+[node name="Down" type="RayCast2D" parent="CeilHookDetector" unique_id=788333334]
+scale = Vector2(1, -1)
+target_position = Vector2(0, -354)
+collision_mask = 64
+hit_from_inside = true
+
+[node name="Left2" type="RayCast2D" parent="CeilHookDetector" unique_id=1654716673]
+scale = Vector2(1, -1)
+target_position = Vector2(-193, -334)
+collision_mask = 64
+hit_from_inside = true
+
+[node name="MiddleLeft2" type="RayCast2D" parent="CeilHookDetector" unique_id=1501939154]
+scale = Vector2(1, -1)
+target_position = Vector2(-91, -342)
+collision_mask = 64
+hit_from_inside = true
+
+[node name="Right2" type="RayCast2D" parent="CeilHookDetector" unique_id=1488334540]
+scale = Vector2(-1, -1)
+target_position = Vector2(-206, -338)
+collision_mask = 64
+hit_from_inside = true
+
+[node name="MiddleRight2" type="RayCast2D" parent="CeilHookDetector" unique_id=1985924034]
+scale = Vector2(-1, -1)
+target_position = Vector2(-91, -342)
+collision_mask = 64
+hit_from_inside = true
+
+[node name="AttackHandler" type="Node2D" parent="." unique_id=458192626]
+process_priority = -1
+process_physics_priority = -1
+script = ExtResource("7_2hnfo")
+
+[node name="Melee" type="Node2D" parent="AttackHandler" unique_id=373345874]
+script = ExtResource("8_y18yp")
+
+[node name="Magic" type="Node2D" parent="AttackHandler" unique_id=222206721]
+script = ExtResource("9_y18yp")
+
+[connection signal="delayed_movement_after_seconds" from="." to="Mover" method="_on_player_delayed_movement_after_seconds"]
+[connection signal="ceil_jump" from="Jumper" to="." method="_on_jumper_ceil_jump"]
+[connection signal="double_jump" from="Jumper" to="." method="_on_jumper_double_jump"]
+[connection signal="jump" from="Jumper" to="." method="_on_jumper_jump"]
+[connection signal="wall_jump" from="Jumper" to="." method="_on_jumper_wall_jump"]
