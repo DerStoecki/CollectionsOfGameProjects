@@ -1,0 +1,85 @@
+[gd_scene load_steps=22 format=3 uid="uid://clr7tjp5lx51b"]
+
+[ext_resource type="Script" path="res://Scripts/collectibleParent.gd" id="1_mjl1t"]
+[ext_resource type="Script" path="res://Scripts/collectibleArea2D.gd" id="2_2k22x"]
+[ext_resource type="Texture2D" uid="uid://ba0mgfawq1xwr" path="res://Assets/Jam.png" id="2_ljrfh"]
+[ext_resource type="Shape2D" uid="uid://br1axi5qlv5ah" path="res://Engine/CollectibleCollisionPhysxShape.tres" id="2_xjdo8"]
+[ext_resource type="AudioStream" uid="uid://cv6hm2450260f" path="res://Assets/Music/1.ogg" id="4_efr62"]
+[ext_resource type="AudioStream" uid="uid://cucg1vhemoog2" path="res://Assets/Music/2.ogg" id="5_bbfur"]
+[ext_resource type="AudioStream" uid="uid://bqpmxe7jrtywd" path="res://Assets/Music/3.ogg" id="6_0fa1y"]
+[ext_resource type="AudioStream" uid="uid://mifwd00usdgw" path="res://Assets/Music/4.ogg" id="7_fxpfj"]
+[ext_resource type="AudioStream" uid="uid://c4sgdmcg8qls2" path="res://Assets/Music/5.ogg" id="8_eh8uu"]
+[ext_resource type="AudioStream" uid="uid://buy6k74xo4pni" path="res://Assets/Music/6.ogg" id="9_ep8wh"]
+[ext_resource type="AudioStream" uid="uid://b0ejcwor784df" path="res://Assets/Music/coin_sounds/coin1.wav" id="10_bgc2a"]
+[ext_resource type="AudioStream" uid="uid://c0ix1culy0c1v" path="res://Assets/Music/coin_sounds/coin2.wav" id="11_uvuus"]
+[ext_resource type="AudioStream" uid="uid://b5lge026kfv6f" path="res://Assets/Music/coin_sounds/coin3.wav" id="12_3f2ly"]
+[ext_resource type="AudioStream" uid="uid://c5x661p2luhkm" path="res://Assets/Music/coin_sounds/coin4.wav" id="13_jkfdc"]
+[ext_resource type="AudioStream" uid="uid://c7wa3ry7jyt5w" path="res://Assets/Music/coin_sounds/coin5.wav" id="14_f1edr"]
+[ext_resource type="AudioStream" uid="uid://cfdmd3xl05ncv" path="res://Assets/Music/coin_sounds/coin6.wav" id="15_roquv"]
+[ext_resource type="AudioStream" uid="uid://d0854776ny303" path="res://Assets/Music/coin_sounds/coin7.wav" id="16_8bff7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bdc6c"]
+friction = 0.55
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arcid"]
+resource_local_to_scene = true
+size = Vector2(65, 95)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5ici8"]
+streams_count = 6
+stream_0/stream = ExtResource("4_efr62")
+stream_1/stream = ExtResource("5_bbfur")
+stream_2/stream = ExtResource("6_0fa1y")
+stream_3/stream = ExtResource("7_fxpfj")
+stream_4/stream = ExtResource("8_eh8uu")
+stream_5/stream = ExtResource("9_ep8wh")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6phhs"]
+streams_count = 7
+stream_0/stream = ExtResource("10_bgc2a")
+stream_1/stream = ExtResource("11_uvuus")
+stream_2/stream = ExtResource("12_3f2ly")
+stream_3/stream = ExtResource("13_jkfdc")
+stream_4/stream = ExtResource("14_f1edr")
+stream_5/stream = ExtResource("15_roquv")
+stream_6/stream = ExtResource("16_8bff7")
+
+[node name="Collectible" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 138
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_bdc6c")
+script = ExtResource("1_mjl1t")
+despawnTime = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 15
+shape = ExtResource("2_xjdo8")
+
+[node name="Jam" type="Sprite2D" parent="."]
+position = Vector2(3, 0)
+scale = Vector2(5, 5)
+texture = ExtResource("2_ljrfh")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("2_2k22x")
+scorepoints = 100
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+z_index = 15
+position = Vector2(0.5, -2.5)
+shape = SubResource("RectangleShape2D_arcid")
+
+[node name="BounceSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_5ici8")
+max_polyphony = 5
+
+[node name="CollectSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_6phhs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

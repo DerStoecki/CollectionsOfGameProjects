@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0qqa3bc7dfya"]
+
+[ext_resource type="Script" path="res://Scripts/butter.gd" id="1_r148v"]
+[ext_resource type="Texture2D" uid="uid://m4q7oqjwauh1" path="res://Assets/Butter.png" id="2_63gpx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqovm"]
+size = Vector2(56, 40)
+
+[sub_resource type="Animation" id="Animation_dkf57"]
+resource_name = "HeartBeat"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Butter:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.2, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2, 2), Vector2(1.3, 1.3), Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_kw0qh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Butter:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0wdls"]
+_data = {
+"HeartBeat": SubResource("Animation_dkf57"),
+"RESET": SubResource("Animation_kw0qh")
+}
+
+[sub_resource type="Gradient" id="Gradient_4wxg5"]
+offsets = PackedFloat32Array(0.00666667, 0.986667)
+colors = PackedColorArray(0.984314, 0.94902, 0.211765, 1, 1, 1, 1, 1)
+
+[node name="ButterArea" type="Area2D"]
+z_index = 50
+scale = Vector2(1.3, 1.3)
+collision_layer = 16
+script = ExtResource("1_r148v")
+
+[node name="Butter" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_63gpx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_xqovm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0wdls")
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 10
+lifetime = 0.5
+explosiveness = 0.3
+randomness = 0.14
+emission_shape = 2
+emission_sphere_radius = 30.0
+direction = Vector2(1, 10)
+spread = 94.93
+gravity = Vector2(0, 150)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+linear_accel_max = 5.0
+damping_max = 5.0
+angle_min = -15.0
+angle_max = 15.0
+scale_amount_max = 3.0
+color = Color(0.984314, 0.94902, 0.211765, 1)
+color_ramp = SubResource("Gradient_4wxg5")
+hue_variation_max = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

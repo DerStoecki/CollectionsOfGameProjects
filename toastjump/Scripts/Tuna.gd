@@ -1,0 +1,2 @@
+extends CollectibleParent
+class_name Tuna

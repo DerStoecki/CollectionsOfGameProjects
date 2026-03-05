@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://comdsgi8u4u6h"]
+
+[ext_resource type="Texture2D" uid="uid://bv4orla7240d8" path="res://Assets/ExcelamationMark.png" id="1_ieupb"]
+[ext_resource type="Script" path="res://Scripts/exclamation_mark.gd" id="1_xrk7f"]
+[ext_resource type="AudioStream" uid="uid://2duh4qahvgkw" path="res://Assets/Music/alert.wav" id="3_j8w71"]
+
+[sub_resource type="Animation" id="Animation_fkrlk"]
+resource_name = "Blink"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExcelamationMark:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.486275), Color(1, 1, 1, 0), Color(1, 1, 1, 0.533333), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"increaseCount"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lcu81"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExcelamationMark:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ttnu3"]
+_data = {
+"Blink": SubResource("Animation_fkrlk"),
+"RESET": SubResource("Animation_lcu81")
+}
+
+[node name="ExclamationMark" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_xrk7f")
+
+[node name="ExcelamationMark" type="Sprite2D" parent="."]
+position = Vector2(0, 14)
+texture = ExtResource("1_ieupb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ttnu3")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_j8w71")
