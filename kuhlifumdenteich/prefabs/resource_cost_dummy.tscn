@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqaqqa141tmfu"]
+
+[ext_resource type="Script" path="res://scripts/Utility/ResourceCost.gd" id="1_hn0f8"]
+[ext_resource type="Script" path="res://scripts/CostNode.gd" id="2_jblae"]
+
+[node name="ResourceCost" type="Node3D"]
+script = ExtResource("1_hn0f8")
+
+[node name="WOOD_COST" type="Node" parent="."]
+script = ExtResource("2_jblae")
+resource = 0
+
+[node name="FISH_COST" type="Node" parent="."]
+script = ExtResource("2_jblae")

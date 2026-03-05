@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwnn8qtbs2ndu"]
+
+[ext_resource type="Script" path="res://scripts/MeshColorUtility.gd" id="1_gom1s"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wwhj1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3u22e"]
+transparency = 1
+shading_mode = 2
+albedo_color = Color(0, 0.501961, 0.529412, 1)
+
+[node name="ParentMesh" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("SphereMesh_wwhj1")
+surface_material_override/0 = SubResource("StandardMaterial3D_3u22e")
+script = ExtResource("1_gom1s")

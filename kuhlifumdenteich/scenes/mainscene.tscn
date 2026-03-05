@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://c8l1075vl6w4n"]
+
+[ext_resource type="Script" uid="uid://dfcwoo68en6mu" path="res://scripts/BaseBuilding/dummyBuilder.gd" id="1_xxpet"]
+[ext_resource type="Script" uid="uid://bjf4cox0nev6g" path="res://scripts/BaseBuilding/dummyBuildLabel.gd" id="2_h3sbu"]
+[ext_resource type="Script" uid="uid://7jmgnoil2syx" path="res://scripts/Farming/Storage.gd" id="3_utvsq"]
+[ext_resource type="Script" uid="uid://c3d56o333efja" path="res://scripts/Farming/ResourceManager.gd" id="4_lod16"]
+[ext_resource type="Script" uid="uid://drgll1sa3ub8l" path="res://scripts/Farming/ResourceBox.gd" id="5_s3sy6"]
+[ext_resource type="Script" uid="uid://cdwrngnb14ikk" path="res://scripts/BaseBuilding/BuildResource.gd" id="6_npaxu"]
+[ext_resource type="Script" uid="uid://b1oeddjiiewoh" path="res://scripts/Camera/MovementController.gd" id="7_scr0n"]
+[ext_resource type="Script" uid="uid://2obkb18j4chl" path="res://scripts/Camera/DebugCameraMovement.gd" id="8_lr4cd"]
+[ext_resource type="Script" uid="uid://1v4dunrvvf67" path="res://scripts/Camera/DebugCameraZoom.gd" id="9_cm0mh"]
+[ext_resource type="Script" uid="uid://cyog3qjwh2g2t" path="res://scripts/BaseBuilding/WorldBuilder.gd" id="11_5rsf3"]
+[ext_resource type="Script" uid="uid://ypgkvhg6sv2m" path="res://scripts/BaseBuilding/BaseBuilder.gd" id="12_va7se"]
+[ext_resource type="Script" uid="uid://cvn2mu14b0e10" path="res://scripts/BaseBuilding/BuildSelector.gd" id="13_xaj8m"]
+[ext_resource type="MeshLibrary" uid="uid://dwvyxwwduor66" path="res://meshlib/DummyCollection.tres" id="13_xnfdn"]
+[ext_resource type="PackedScene" uid="uid://bsc3dey6c2c32" path="res://prefabs/blue_print.tscn" id="14_owfml"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0jl1h"]
+font_size = 25
+font_color = Color(1, 1, 0.211765, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ax622"]
+line_spacing = 6.0
+font_size = 20
+font_color = Color(1, 0.662745, 0.890196, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 6
+shadow_color = Color(0.854902, 0.113725, 0.709804, 0)
+shadow_offset = Vector2(5, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l8wge"]
+font_size = 40
+font_color = Color(0.929412, 0.929412, 0, 1)
+
+[node name="root" type="Node3D" unique_id=231400818]
+
+[node name="Builder" type="Node3D" parent="." unique_id=1470603346]
+script = ExtResource("1_xxpet")
+parentPath = NodePath("../ResourceManager")
+
+[node name="IsBuildMode" type="Label" parent="Builder" unique_id=1204197781]
+offset_left = 1.0
+offset_top = 151.0
+offset_right = 133.0
+offset_bottom = 206.0
+text = "Hello"
+label_settings = SubResource("LabelSettings_0jl1h")
+script = ExtResource("2_h3sbu")
+
+[node name="Storage" type="Node3D" parent="." unique_id=1237027886]
+script = ExtResource("3_utvsq")
+resourceManagerPath = NodePath("../ResourceManager")
+
+[node name="ResourceManager" type="Node3D" parent="." unique_id=2132716890]
+script = ExtResource("4_lod16")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=484484578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29972, 1.39894)
+
+[node name="UI" type="Node" parent="." unique_id=233137742]
+
+[node name="UIResourceBox" type="HBoxContainer" parent="UI" unique_id=1535624992]
+custom_minimum_size = Vector2(10, 10)
+offset_right = 1152.0
+offset_bottom = 34.0
+size_flags_stretch_ratio = 1.5
+theme_override_constants/separation = 225
+alignment = 1
+script = ExtResource("5_s3sy6")
+storagePath = NodePath("../../Storage")
+
+[node name="WOOD" type="Label" parent="UI/UIResourceBox" unique_id=1077051724]
+layout_mode = 2
+text = "WOOD
+"
+label_settings = SubResource("LabelSettings_ax622")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="FISH" type="Label" parent="UI/UIResourceBox" unique_id=1693982671]
+layout_mode = 2
+text = "FISH"
+label_settings = SubResource("LabelSettings_ax622")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="IRON" type="Label" parent="UI/UIResourceBox" unique_id=1095452923]
+layout_mode = 2
+text = "IRON"
+label_settings = SubResource("LabelSettings_ax622")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="WATER" type="Label" parent="UI/UIResourceBox" unique_id=1769254242]
+layout_mode = 2
+text = "WATER"
+label_settings = SubResource("LabelSettings_ax622")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="Button" type="Button" parent="UI" unique_id=2042641444]
+offset_left = 1.0
+offset_top = 606.0
+offset_right = 162.0
+offset_bottom = 648.0
+text = "Build"
+script = ExtResource("6_npaxu")
+spawn_point = Vector3(-1.5, 0.1, -1.5)
+
+[node name="Pivot" type="Node3D" parent="." unique_id=1952638505]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 35.2812, 20.3291, 30.9319)
+
+[node name="Camera3D" type="Camera3D" parent="Pivot" unique_id=786162354]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+projection = 1
+fov = 90.0
+size = 20.0
+near = 0.004
+
+[node name="MovementController" type="Node3D" parent="Pivot" unique_id=1785482006]
+transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, 1.69877, 1.90535, 1.77421)
+script = ExtResource("7_scr0n")
+cameraPath = NodePath("../Camera3D")
+minZoom = 1.0
+moveSpeed = 10.0
+zoomSpeed = 150.0
+
+[node name="Move" type="Label" parent="Pivot/MovementController" unique_id=228236097]
+offset_left = 28.0
+offset_top = 494.0
+offset_right = 118.0
+offset_bottom = 552.0
+text = "TEST"
+label_settings = SubResource("LabelSettings_l8wge")
+script = ExtResource("8_lr4cd")
+
+[node name="Zoom" type="Label" parent="Pivot/MovementController" unique_id=605433588]
+offset_left = 700.0
+offset_top = 489.0
+offset_right = 790.0
+offset_bottom = 547.0
+text = "TEST"
+label_settings = SubResource("LabelSettings_l8wge")
+script = ExtResource("9_cm0mh")
+
+[node name="WorldBuilder" type="GridMap" parent="." unique_id=112108806]
+mesh_library = ExtResource("13_xnfdn")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(2, 1, 524288, 2, 0, 524288, 3, 0, 524288, 4, 0, 524288, 4, 1, 524288, 3, 1, 524288, 3, 2, 524288, 2, 2, 524288, 3, 3, 524288, 4, 3, 524288, 4, 2, 524288, 5, 2, 524288, 5, 1, 524288, 5, 0, 524288, 5, 3, 524288, 2, 3, 524288, 2, 4, 524288, 2, 5, 524288, 3, 5, 524288, 3, 4, 524288, 4, 4, 524288, 5, 4, 524288, 6, 4, 524288, 6, 3, 524288, 7, 2, 524288, 7, 1, 524288, 6, 1, 524288, 6, 0, 524288, 6, 2, 524288, 5, 5, 524288, 4, 5, 524288, 6, 5, 524288, 7, 4, 524288, 7, 3, 524288, 7, 0, 524288, 7, 5, 524288)
+}
+script = ExtResource("11_5rsf3")
+
+[node name="BuildGrid" type="GridMap" parent="." unique_id=2039536611]
+mesh_library = ExtResource("13_xnfdn")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(2, 5, 7, 2, 4, 7, 2, 3, 7, 2, 2, 7, 2, 1, 7, 3, 1, 7, 4, 1, 7, 4, 2, 7, 4, 3, 7, 4, 4, 7, 3, 4, 7, 3, 5, 7, 4, 5, 7, 3, 3, 7, 3, 2, 7, 3, 0, 7, 2, 0, 7, 4, 0, 7, 5, 0, 7, 6, 0, 7, 6, 1, 7, 6, 2, 7, 5, 2, 7, 5, 3, 7, 5, 4, 7, 5, 5, 7, 6, 4, 7, 6, 3, 7, 5, 1, 7, 6, 5, 7, 7, 5, 7, 7, 4, 7, 7, 3, 7, 7, 2, 7, 7, 1, 7, 7, 0, 7)
+}
+script = ExtResource("12_va7se")
+worldGrid = NodePath("../WorldBuilder")
+builderPath = NodePath("../Builder")
+
+[node name="BuildHelper" type="Node3D" parent="BuildGrid" unique_id=713376664]
+script = ExtResource("13_xaj8m")
+bluePrint = ExtResource("14_owfml")
+managerPath = NodePath("../../ResourceManager")
+
+[connection signal="pressed" from="UI/Button" to="UI/Button" method="_on_pressed"]

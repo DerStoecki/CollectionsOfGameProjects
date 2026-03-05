@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp124uacckwrc"]
+
+[ext_resource type="Script" path="res://scripts/Farming/ResourceEnhancer.gd" id="1_4q1ae"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g5k2b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5pc0l"]
+
+[node name="Mesh" type="MeshInstance3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_g5k2b")
+script = ExtResource("1_4q1ae")
+
+[node name="ResourceEnhancer" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="ResourceEnhancer"]
+transform = Transform3D(1.00015, 0, 0, 0, 1.00015, 0, 0, 0, 1.00015, 0, 0, 0)
+shape = SubResource("BoxShape3D_5pc0l")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://omnqbd7jvpuf"]
+
+[ext_resource type="Script" path="res://scripts/Farming/ResourceCreator.gd" id="1_jwlvl"]
+[ext_resource type="Script" path="res://scripts/Farming/HarvestDisplay.gd" id="2_0reoh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vv6rx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ksnk"]
+size = Vector3(1, 0.20229, 1)
+
+[node name="Platform" type="MeshInstance3D" groups=["ResourceCreator", "ResourcePlatform"]]
+transform = Transform3D(1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_vv6rx")
+skeleton = NodePath("../..")
+script = ExtResource("1_jwlvl")
+
+[node name="ResourcePlatform" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResourcePlatform"]
+shape = SubResource("BoxShape3D_3ksnk")
+
+[node name="HarvestDisplay" type="Node3D" parent="."]
+script = ExtResource("2_0reoh")
+
+[node name="ResourceValue" type="Label3D" parent="HarvestDisplay"]
+transform = Transform3D(0.810195, 0, 0.58616, 0, 5.33335, 0, -0.58616, 0, 0.810195, 0, 1.35531, 0)
+pixel_size = 0.01
+billboard = 1
+modulate = Color(0, 1, 1, 1)
+text = "Hello"
